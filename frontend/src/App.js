@@ -1,7 +1,11 @@
+import { useTranslation } from 'react-i18next';
+
 function App() {
+  const { t } = useTranslation();
+
   return (
-   <div className="bg-blue text-white p-4">
-      Hello world
+   <div>
+      {t('welcome')}
     </div>
   );
 }
