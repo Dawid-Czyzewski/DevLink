@@ -5,5 +5,22 @@
         "about": "O nas",
         "login": "Zaloguj się",
         "register": "Zarejestruj się"
+    },
+    "footer": {
+        "description": "Platforma łącząca deweloperów z projektami. Znajdź swój następny projekt lub rekrutuj najlepszych programistów.",
+        "quickLinks": "Szybkie linki",
+        "findProjects": "Szukaj projektów",
+        "postProject": "Dodaj projekt",
+        "browse": "Przeglądaj",
+        "about": "O nas",
+        "contact": "Kontakt",
+        "help": "Pomoc",
+        "legal": "Prawne",
+        "privacy": "Polityka prywatności",
+        "terms": "Regulamin",
+        "cookies": "Polityka cookies",
+        "followUs": "Śledź nas",
+        "copyright": "© 2025 DevLink. Wszystkie prawa zastrzeżone.",
+        "madeWith": "Zrobione z ❤️ dla społeczności IT"
     }
 }

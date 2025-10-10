@@ -5,5 +5,22 @@
         "about": "About Us",
         "login": "Log In",
         "register": "Sign Up"
+    },
+    "footer": {
+        "description": "Platform connecting developers with projects. Find your next project or recruit the best programmers.",
+        "quickLinks": "Quick Links",
+        "findProjects": "Find Projects",
+        "postProject": "Post Project",
+        "browse": "Browse",
+        "about": "About Us",
+        "contact": "Contact",
+        "help": "Help",
+        "legal": "Legal",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "cookies": "Cookie Policy",
+        "followUs": "Follow Us",
+        "copyright": "© 2025 DevLink. All rights reserved.",
+        "madeWith": "Made with ❤️ for the IT community"
     }
 }

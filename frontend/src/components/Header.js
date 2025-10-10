@@ -19,7 +19,7 @@ const Header = () => {
         scrolled ? "shadow-2xl backdrop-blur-md bg-opacity-95 py-3" : "shadow-lg py-4"
       }`}
     >
-      <div className="container mx-auto px-4 lg:px-8 flex items-center justify-between">
+      <div className="w-full px-4 lg:px-8 flex items-center justify-between">
         <div className="hidden lg:contents">
           <DesktopHeader scrolled={scrolled} />
         </div>

@@ -14,16 +14,18 @@ const MobileHeader = () => {
       <MobileMenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
 
       {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 lg:hidden">
+        <div className="absolute top-full left-0 right-0 lg:hidden z-40">
           <div 
             className={`overflow-hidden transition-all duration-300 ease-in-out ${
-              isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+              isMenuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
             }`}
           >
-            <div className="bg-gray-900/95 backdrop-blur-lg border-t border-gray-700 py-6 px-4 space-y-4">
-              <NavigationLinks variant="mobile" onLinkClick={() => setIsMenuOpen(false)} />
-              <AuthButtons variant="mobile" />
-              <LanguageButtons />
+            <div className="bg-gray-900/95 backdrop-blur-lg border-t border-gray-700 py-6 px-4 max-h-[calc(100vh-80px)] overflow-y-auto">
+              <div className="space-y-6">
+                <NavigationLinks variant="mobile" onLinkClick={() => setIsMenuOpen(false)} />
+                <AuthButtons variant="mobile" />
+                <LanguageButtons />
+              </div>
             </div>
           </div>
         </div>

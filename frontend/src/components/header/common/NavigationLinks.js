@@ -15,7 +15,7 @@ const NavigationLinks = ({ variant = "desktop", onLinkClick }) => {
           <a
             key={link.href}
             href={link.href}
-            className="block text-gray-300 hover:text-yellow-400 hover:bg-gray-800/50 px-4 py-3 rounded-lg transition-all duration-200 font-medium cursor-pointer"
+            className="block text-gray-300 hover:text-yellow-400 hover:bg-gray-800/50 px-3 py-2.5 rounded-lg transition-all duration-200 font-medium cursor-pointer"
             onClick={onLinkClick}
           >
             {t(link.key)}
