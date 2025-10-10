@@ -1,0 +1,13 @@
+const Logo = () => {
+  return (
+    <a
+      href="/"
+      className="text-3xl md:text-4xl font-extrabold tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-500 font-serif cursor-pointer hover:scale-110 transition-all duration-300 hover:drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]"
+    >
+      DevLnk
+    </a>
+  );
+};
+
+export default Logo;
+

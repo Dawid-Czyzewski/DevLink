@@ -1,12 +1,11 @@
-import { useTranslation } from 'react-i18next';
+import Header from './components/Header';
+import { LanguageProvider } from './contexts/LanguageContext';
 
 function App() {
-  const { t } = useTranslation();
-
   return (
-   <div>
-      {t('welcome')}
-    </div>
+    <LanguageProvider>
+      <Header />
+    </LanguageProvider>
   );
 }
 
