@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Logo from "./common/Logo";
 import MobileMenuButton from "./common/MobileMenuButton";
 import NavigationLinks from "./common/NavigationLinks";
@@ -7,9 +7,26 @@ import LanguageButtons from "./common/LanguageButtons";
 
 const MobileHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   return (
-    <>
+    <div ref={menuRef} className="relative w-full flex items-center justify-between">
       <Logo />
       <MobileMenuButton isOpen={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)} />
 
@@ -30,7 +47,7 @@ const MobileHeader = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

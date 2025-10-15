@@ -22,5 +22,57 @@
         "followUs": "Śledź nas",
         "copyright": "© 2025 DevLink. Wszystkie prawa zastrzeżone.",
         "madeWith": "Zrobione z ❤️ dla społeczności IT"
+    },
+    "login": {
+        "welcomeMessage": "Witaj ponownie w DevLink",
+        "rememberMe": "Zapamiętaj mnie",
+        "forgotPassword": "Zapomniałeś hasła?",
+        "noAccount": "Nie masz konta?"
+    },
+    "register": {
+        "title": "Utwórz konto",
+        "subtitle": "Dołącz do społeczności DevLink",
+        "nickname": "Nazwa użytkownika",
+        "nicknamePlaceholder": "Twoja unikalna nazwa",
+        "email": "Adres e-mail",
+        "emailPlaceholder": "twoj@email.com",
+        "password": "Hasło",
+        "passwordPlaceholder": "Minimum 8 znaków",
+        "confirmPassword": "Powtórz hasło",
+        "confirmPasswordPlaceholder": "Wprowadź hasło ponownie",
+        "terms": "Akceptuję",
+        "termsLink": "regulamin serwisu",
+        "termsAnd": "oraz",
+        "privacyLink": "politykę prywatności",
+        "submit": "Zarejestruj się",
+        "submitting": "Rejestracja...",
+        "successMessage": "Rejestracja pomyślna! Możesz się teraz zalogować.",
+        "errorMessage": "Rejestracja nieudana. Spróbuj ponownie.",
+        "success": {
+            "title": "Rejestracja pomyślna!",
+            "message": "Twoje konto zostało utworzone pomyślnie.",
+            "emailSent": "Wysłaliśmy email potwierdzający na adres:",
+            "checkSpam": "Sprawdź folder spam, jeśli nie widzisz go w skrzynce odbiorczej.",
+            "thankYou": "Dziękujemy za dołączenie do DevLink!",
+            "loginButton": "Przejdź do logowania",
+            "homeButton": "Powrót do strony głównej"
+        },
+        "haveAccount": "Masz już konto?",
+        "loginLink": "Zaloguj się",
+        "errors": {
+            "nicknameRequired": "Nazwa użytkownika jest wymagana",
+            "emailRequired": "Adres e-mail jest wymagany",
+            "emailInvalid": "Nieprawidłowy format adresu e-mail",
+            "passwordRequired": "Hasło jest wymagane",
+            "passwordMinLength": "Hasło musi mieć minimum 8 znaków",
+            "passwordMaxLength": "Hasło nie może przekraczać 255 znaków",
+            "confirmPasswordRequired": "Potwierdzenie hasła jest wymagane",
+            "passwordsMismatch": "Hasła nie są identyczne",
+            "emailExists": "Email już istnieje",
+            "nicknameExists": "Nazwa użytkownika już istnieje",
+            "databaseError": "Wystąpił błąd bazy danych",
+            "unexpectedError": "Wystąpił nieoczekiwany błąd",
+            "termsRequired": "Musisz zaakceptować regulamin"
+        }
     }
 }

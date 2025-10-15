@@ -22,5 +22,57 @@
         "followUs": "Follow Us",
         "copyright": "© 2025 DevLink. All rights reserved.",
         "madeWith": "Made with ❤️ for the IT community"
+    },
+    "login": {
+        "welcomeMessage": "Welcome back to DevLink",
+        "rememberMe": "Remember me",
+        "forgotPassword": "Forgot password?",
+        "noAccount": "Don't have an account?"
+    },
+    "register": {
+        "title": "Create Account",
+        "subtitle": "Join the DevLink community",
+        "nickname": "Username",
+        "nicknamePlaceholder": "Your unique username",
+        "email": "Email address",
+        "emailPlaceholder": "your@email.com",
+        "password": "Password",
+        "passwordPlaceholder": "Minimum 8 characters",
+        "confirmPassword": "Confirm password",
+        "confirmPasswordPlaceholder": "Enter password again",
+        "terms": "I accept the",
+        "termsLink": "terms of service",
+        "termsAnd": "and",
+        "privacyLink": "privacy policy",
+        "submit": "Sign Up",
+        "submitting": "Registering...",
+        "successMessage": "Registration successful! You can now log in.",
+        "errorMessage": "Registration failed. Please try again.",
+        "success": {
+            "title": "Registration Successful!",
+            "message": "Your account has been created successfully.",
+            "emailSent": "We've sent a confirmation email to:",
+            "checkSpam": "Please check your spam folder if you don't see it in your inbox.",
+            "thankYou": "Thank you for joining DevLink!",
+            "loginButton": "Go to Login",
+            "homeButton": "Back to Home"
+        },
+        "haveAccount": "Already have an account?",
+        "loginLink": "Log In",
+        "errors": {
+            "nicknameRequired": "Username is required",
+            "emailRequired": "Email address is required",
+            "emailInvalid": "Invalid email format",
+            "passwordRequired": "Password is required",
+            "passwordMinLength": "Password must be at least 8 characters",
+            "passwordMaxLength": "Password must not exceed 255 characters",
+            "confirmPasswordRequired": "Password confirmation is required",
+            "passwordsMismatch": "Passwords do not match",
+            "emailExists": "Email already exists",
+            "nicknameExists": "Nickname already exists",
+            "databaseError": "Database error occurred",
+            "unexpectedError": "An unexpected error occurred",
+            "termsRequired": "You must accept the terms"
+        }
     }
 }
