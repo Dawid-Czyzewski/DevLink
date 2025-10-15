@@ -4,7 +4,10 @@
         "postOffer": "Post Offer",
         "about": "About Us",
         "login": "Log In",
-        "register": "Sign Up"
+        "register": "Sign Up",
+        "logout": "Logout",
+        "profile": "Profile",
+        "welcome": "Welcome"
     },
     "footer": {
         "description": "Platform connecting developers with projects. Find your next project or recruit the best programmers.",
@@ -27,7 +30,39 @@
         "welcomeMessage": "Welcome back to DevLink",
         "rememberMe": "Remember me",
         "forgotPassword": "Forgot password?",
-        "noAccount": "Don't have an account?"
+        "noAccount": "Don't have an account?",
+        "emailPlaceholder": "Your email address",
+        "passwordPlaceholder": "Password",
+        "successMessage": "Successfully logged in!",
+        "errorMessage": "Login failed. Please try again.",
+        "submitting": "Logging in...",
+        "errors": {
+            "emailRequired": "Email is required",
+            "invalidEmail": "Please enter a valid email address",
+            "passwordRequired": "Password is required",
+            "invalidCredentials": "Invalid email or password",
+            "accountNotActivated": "Account not activated. Please check your email.",
+            "unexpectedError": "An unexpected error occurred"
+        }
+    },
+    "auth": {
+        "userFound": "User found",
+        "notAuthenticated": "Not authenticated",
+        "errors": {
+            "unexpectedError": "An unexpected error occurred"
+        }
+    },
+    "logout": {
+        "successMessage": "Successfully logged out",
+        "errorMessage": "Logout failed",
+        "errors": {
+            "unexpectedError": "An unexpected error occurred during logout"
+        }
+    },
+    "profile": {
+        "title": "Profile",
+        "welcomeMessage": "Welcome to your profile",
+        "comingSoon": "More features coming soon..."
     },
     "register": {
         "title": "Create Account",

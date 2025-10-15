@@ -18,7 +18,13 @@ class Request {
     
     public static function getJsonInput() {
         $input = file_get_contents('php://input');
-        return json_decode($input, true);
+        $data = json_decode($input, true);
+        
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new Exception('Invalid JSON input: ' . json_last_error_msg());
+        }
+        
+        return $data ?: [];
     }
     
     public static function getMethod() {

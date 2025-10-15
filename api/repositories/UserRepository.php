@@ -70,7 +70,7 @@ class UserRepository implements UserRepositoryInterface {
     }
     
     public function findById(int $id): ?User {
-        $query = "SELECT id, nickname, email, password, created_at
+        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at
                   FROM " . $this->table_name . " 
                   WHERE id = :id 
                   LIMIT 1";
@@ -84,7 +84,7 @@ class UserRepository implements UserRepositoryInterface {
     }
     
     public function findByEmail(string $email): ?User {
-        $query = "SELECT id, nickname, email, password, created_at
+        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at
                   FROM " . $this->table_name . " 
                   WHERE email = :email 
                   LIMIT 1";
@@ -98,7 +98,7 @@ class UserRepository implements UserRepositoryInterface {
     }
     
     public function findByNickname(string $nickname): ?User {
-        $query = "SELECT id, nickname, email, password, created_at
+        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at
                   FROM " . $this->table_name . " 
                   WHERE nickname = :nickname 
                   LIMIT 1";

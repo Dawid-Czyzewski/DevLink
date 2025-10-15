@@ -23,16 +23,26 @@ class ApiService {
 
 		try {
 			const response = await fetch(url, config);
-			const data = await response.json();
-
+			
 			if (!response.ok) {
+				let data;
+				try {
+					data = await response.json();
+				} catch (jsonError) {
+					throw new ApiError(`HTTP ${response.status}: ${response.statusText}`, response.status);
+				}
 				throw new ApiError(data.message || 'Request failed', response.status, data.errors);
 			}
 
+			const data = await response.json();
 			return data;
 		} catch (error) {
 			if (error instanceof ApiError) {
 				throw error;
+			}
+			
+			if (error.name === 'TypeError' && error.message.includes('fetch')) {
+				throw new ApiError('Cannot connect to server. Please check if backend is running.', 0);
 			}
 			
 			throw new ApiError('Network error. Please check your connection.', 0);

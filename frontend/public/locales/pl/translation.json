@@ -4,7 +4,10 @@
         "postOffer": "Dodaj ogłoszenie",
         "about": "O nas",
         "login": "Zaloguj się",
-        "register": "Zarejestruj się"
+        "register": "Zarejestruj się",
+        "logout": "Wyloguj",
+        "profile": "Profil",
+        "welcome": "Witaj"
     },
     "footer": {
         "description": "Platforma łącząca deweloperów z projektami. Znajdź swój następny projekt lub rekrutuj najlepszych programistów.",
@@ -27,7 +30,39 @@
         "welcomeMessage": "Witaj ponownie w DevLink",
         "rememberMe": "Zapamiętaj mnie",
         "forgotPassword": "Zapomniałeś hasła?",
-        "noAccount": "Nie masz konta?"
+        "noAccount": "Nie masz konta?",
+        "emailPlaceholder": "Twój adres e-mail",
+        "passwordPlaceholder": "Hasło",
+        "successMessage": "Pomyślnie zalogowano!",
+        "errorMessage": "Logowanie nieudane. Spróbuj ponownie.",
+        "submitting": "Logowanie...",
+        "errors": {
+            "emailRequired": "Email jest wymagany",
+            "invalidEmail": "Wprowadź prawidłowy adres email",
+            "passwordRequired": "Hasło jest wymagane",
+            "invalidCredentials": "Nieprawidłowy email lub hasło",
+            "accountNotActivated": "Konto nie jest aktywne. Sprawdź swoją skrzynkę email.",
+            "unexpectedError": "Wystąpił nieoczekiwany błąd"
+        }
+    },
+    "auth": {
+        "userFound": "Użytkownik znaleziony",
+        "notAuthenticated": "Nie zalogowano",
+        "errors": {
+            "unexpectedError": "Wystąpił nieoczekiwany błąd"
+        }
+    },
+    "logout": {
+        "successMessage": "Pomyślnie wylogowano",
+        "errorMessage": "Wylogowanie nieudane",
+        "errors": {
+            "unexpectedError": "Wystąpił nieoczekiwany błąd podczas wylogowania"
+        }
+    },
+    "profile": {
+        "title": "Profil",
+        "welcomeMessage": "Witaj w swoim profilu",
+        "comingSoon": "Więcej funkcji już wkrótce..."
     },
     "register": {
         "title": "Utwórz konto",

@@ -5,8 +5,11 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ActivatePage from './pages/ActivatePage';
 import RegistrationSuccessPage from './pages/RegistrationSuccessPage';
+import ProfilePage from './pages/ProfilePage';
+import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
+import { AuthProvider } from './contexts/AuthContext';
 import ToastContainer from './components/common/ToastContainer';
 
 function AppContent() {
@@ -15,19 +18,34 @@ function AppContent() {
 	return (
 		<LanguageProvider>
 			<HashRouter>
-				<div className="min-h-screen flex flex-col">
-					<Header />
-					<main className="flex-1">
-						<Routes>
-							<Route path="/login" element={<LoginPage />} />
-							<Route path="/register" element={<RegisterPage />} />
-							<Route path="/activate" element={<ActivatePage />} />
-							<Route path="/registration-success" element={<RegistrationSuccessPage />} />
-						</Routes>
-					</main>
-					<Footer />
-					<ToastContainer toasts={toasts} onRemoveToast={removeToast} />
-				</div>
+				<AuthProvider>
+					<div className="min-h-screen flex flex-col">
+						<Header />
+						<main className="flex-1">
+							<Routes>
+								<Route path="/login" element={
+									<ProtectedRoute requireAuth={false}>
+										<LoginPage />
+									</ProtectedRoute>
+								} />
+								<Route path="/register" element={
+									<ProtectedRoute requireAuth={false}>
+										<RegisterPage />
+									</ProtectedRoute>
+								} />
+								<Route path="/activate" element={<ActivatePage />} />
+								<Route path="/registration-success" element={<RegistrationSuccessPage />} />
+								<Route path="/profile" element={
+									<ProtectedRoute requireAuth={true}>
+										<ProfilePage />
+									</ProtectedRoute>
+								} />
+							</Routes>
+						</main>
+						<Footer />
+						<ToastContainer toasts={toasts} onRemoveToast={removeToast} />
+					</div>
+				</AuthProvider>
 			</HashRouter>
 		</LanguageProvider>
 	);

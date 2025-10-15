@@ -4,6 +4,8 @@ require_once MODELS_PATH . 'User.php';
 require_once REPOSITORIES_PATH . 'UserRepositoryInterface.php';
 require_once DTO_PATH . 'UserRegistrationDTO.php';
 require_once DTO_PATH . 'UserResponseDTO.php';
+require_once DTO_PATH . 'UserActivationDTO.php';
+require_once DTO_PATH . 'UserLoginDTO.php';
 require_once VALIDATORS_PATH . 'UserRegistrationValidator.php';
 require_once INTERFACES_PATH . 'EmailServiceInterface.php';
 
@@ -120,6 +122,104 @@ class UserService {
         return new UserResponseDTO($user->toArray());
     }
     
+    public function loginUser(UserLoginDTO $dto): array {
+        try {
+            $errors = $dto->validate();
+            if (!empty($errors)) {
+                return [
+                    'success' => false,
+                    'errors' => $errors
+                ];
+            }
+
+            $user = $this->userRepository->findByEmail($dto->getEmail());
+            
+            if (!$user) {
+                return [
+                    'success' => false,
+                    'message' => 'login.errors.invalidCredentials'
+                ];
+            }
+
+            if (!$user->getIsActive()) {
+                return [
+                    'success' => false,
+                    'message' => 'login.errors.accountNotActivated'
+                ];
+            }
+
+            if (!password_verify($dto->getPassword(), $user->getPassword())) {
+                return [
+                    'success' => false,
+                    'message' => 'login.errors.invalidCredentials'
+                ];
+            }
+
+            session_start();
+            $_SESSION['user_id'] = $user->getId();
+            $_SESSION['user_email'] = $user->getEmail();
+            $_SESSION['user_nickname'] = $user->getNickname();
+            $_SESSION['login_time'] = time();
+
+            if ($dto->getRememberMe()) {
+                $_SESSION['remember_me'] = true;
+                $_SESSION['expires'] = time() + (30 * 24 * 60 * 60);
+            } else {
+                $_SESSION['expires'] = time() + (24 * 60 * 60);
+            }
+
+            return [
+                'success' => true,
+                'user' => new UserResponseDTO($user->toArray()),
+                'session_id' => session_id(),
+                'message' => 'login.successMessage'
+            ];
+
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => 'login.errors.unexpectedError'
+            ];
+        }
+    }
+
+    public function logoutUser(): bool {
+        try {
+            session_start();
+            session_destroy();
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    public function getCurrentUser(): ?UserResponseDTO {
+        try {
+            session_start();
+            
+            if (!isset($_SESSION['user_id']) || !isset($_SESSION['expires'])) {
+                return null;
+            }
+
+            if (time() > $_SESSION['expires']) {
+                session_destroy();
+                return null;
+            }
+
+            $user = $this->userRepository->findById($_SESSION['user_id']);
+            
+            if (!$user || !$user->getIsActive()) {
+                session_destroy();
+                return null;
+            }
+
+            return new UserResponseDTO($user->toArray());
+
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
     private function generateActivationToken(): string {
         return bin2hex(random_bytes(32));
     }

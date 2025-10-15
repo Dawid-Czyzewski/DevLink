@@ -56,11 +56,54 @@ class UserService {
 	}
 
 	async login(userData) {
-		throw new Error('Login not implemented yet');
+		try {
+			const response = await this.apiService.post('userController', 'login', userData);
+			return {
+				success: true,
+				user: response.data.user,
+				session_id: response.data.session_id,
+				message: response.message,
+			};
+		} catch (error) {
+			if (error instanceof ApiError) {
+				return {
+					success: false,
+					message: error.message,
+					errors: error.errors,
+				};
+			}
+			
+			return {
+				success: false,
+				message: 'login.errors.unexpectedError',
+				errors: null,
+			};
+		}
 	}
 
-	async getUser() {
-		throw new Error('Get user not implemented yet');
+	async getCurrentUser() {
+		try {
+			const response = await this.apiService.get('userController', 'me');
+			return {
+				success: true,
+				user: response.data.user,
+				message: response.message,
+			};
+		} catch (error) {
+			if (error instanceof ApiError) {
+				return {
+					success: false,
+					message: error.message,
+					errors: error.errors,
+				};
+			}
+			
+			return {
+				success: false,
+				message: 'auth.errors.unexpectedError',
+				errors: null,
+			};
+		}
 	}
 
 	async updateUser(userData) {
@@ -72,7 +115,27 @@ class UserService {
 	}
 
 	async logout() {
-		throw new Error('Logout not implemented yet');
+		try {
+			const response = await this.apiService.post('userController', 'logout');
+			return {
+				success: true,
+				message: response.message,
+			};
+		} catch (error) {
+			if (error instanceof ApiError) {
+				return {
+					success: false,
+					message: error.message,
+					errors: error.errors,
+				};
+			}
+			
+			return {
+				success: false,
+				message: 'logout.errors.unexpectedError',
+				errors: null,
+			};
+		}
 	}
 
 	async deleteUser() {
