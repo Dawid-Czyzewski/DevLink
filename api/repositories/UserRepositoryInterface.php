@@ -8,6 +8,8 @@ interface UserRepositoryInterface {
     public function emailExists(string $email, ?int $excludeId = null): bool;
     public function nicknameExists(string $nickname, ?int $excludeId = null): bool;
     public function delete(int $id): bool;
+    public function findByActivationToken(string $token): ?User;
+    public function activateUser(int $id): bool;
     public function findAll(int $limit = 50, int $offset = 0): array;
     public function count(): int;
 }

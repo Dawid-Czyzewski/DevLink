@@ -33,7 +33,6 @@ class EmailService implements EmailServiceInterface {
 		}
 		
 		if (!$socket) {
-			error_log("SMTP Connection failed: $errstr ($errno)");
 			return false;
 		}
 		
@@ -60,13 +59,11 @@ class EmailService implements EmailServiceInterface {
 			$response = $this->smtpRead($socket);
 			
 			if (strpos($response, '220') === false) {
-				error_log("STARTTLS not supported by server");
 				fclose($socket);
 				return false;
 			}
 			
 			if (!stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT)) {
-				error_log("Failed to enable TLS: " . print_r(stream_get_meta_data($socket), true));
 				fclose($socket);
 				return false;
 			}

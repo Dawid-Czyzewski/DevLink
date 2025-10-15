@@ -74,5 +74,25 @@
             "unexpectedError": "Wystąpił nieoczekiwany błąd",
             "termsRequired": "Musisz zaakceptować regulamin"
         }
+    },
+    "activate": {
+        "activating": "Aktywacja konta",
+        "activatingMessage": "Proszę czekać, aktywujemy Twoje konto...",
+        "successTitle": "Konto aktywowane!",
+        "successMessage": "Twoje konto zostało pomyślnie aktywowane. Możesz się teraz zalogować i zacząć korzystać z DevLink.",
+        "errorTitle": "Aktywacja nieudana",
+        "goToLogin": "Przejdź do logowania",
+        "goToHome": "Powrót do strony głównej",
+        "status": {
+            "accountActivated": "Konto pomyślnie aktywowane",
+            "activationFailed": "Aktywacja nieudana"
+        },
+        "errors": {
+            "tokenRequired": "Token aktywacyjny jest wymagany",
+            "invalidToken": "Nieprawidłowy lub wygasły token aktywacyjny",
+            "alreadyActivated": "Konto jest już aktywowane",
+            "activationFailed": "Nie udało się aktywować konta. Spróbuj ponownie.",
+            "unexpectedError": "Wystąpił nieoczekiwany błąd podczas aktywacji"
+        }
     }
 }

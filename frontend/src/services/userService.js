@@ -30,6 +30,31 @@ class UserService {
 		}
 	}
 
+	async activateAccount(token) {
+		try {
+			const response = await this.apiService.get('userController', 'activate', { token });
+			return {
+				success: true,
+				user: response.data.user,
+				message: response.message,
+			};
+		} catch (error) {
+			if (error instanceof ApiError) {
+				return {
+					success: false,
+					message: error.message,
+					errors: error.errors,
+				};
+			}
+			
+			return {
+				success: false,
+				message: 'activate.errors.unexpectedError',
+				errors: null,
+			};
+		}
+	}
+
 	async login(userData) {
 		throw new Error('Login not implemented yet');
 	}

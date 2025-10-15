@@ -180,6 +180,31 @@ class UserRepository implements UserRepositoryInterface {
         $result = $stmt->fetch();
         return $result['total'];
     }
+
+    public function findByActivationToken(string $token): ?User {
+        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at
+                  FROM " . $this->table_name . " 
+                  WHERE activation_token = :token 
+                  LIMIT 1";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":token", $token);
+        $stmt->execute();
+        
+        $data = $stmt->fetch();
+        return $data ? $this->mapToUser($data) : null;
+    }
+    
+    public function activateUser(int $id): bool {
+        $query = "UPDATE " . $this->table_name . " 
+                  SET is_active = 1, activation_token = NULL 
+                  WHERE id = :id";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":id", $id);
+        
+        return $stmt->execute();
+    }
     
     private function mapToUser(array $data): User {
         return new User(
@@ -187,7 +212,9 @@ class UserRepository implements UserRepositoryInterface {
             $data['nickname'],
             $data['email'],
             $data['password'] ?? null,
-            $data['created_at']
+            $data['created_at'],
+            $data['activation_token'] ?? null,
+            (bool) $data['is_active']
         );
     }
 }

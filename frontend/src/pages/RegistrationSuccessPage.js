@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
+import PageContainer from "../components/common/PageContainer";
 
 const RegistrationSuccessPage = () => {
 	const { t } = useTranslation();
@@ -7,8 +8,8 @@ const RegistrationSuccessPage = () => {
 	const { email } = location.state || {};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-			<div className="max-w-md w-full space-y-8">
+		<PageContainer className="py-12">
+			<div className="w-full space-y-8">
 				<div className="text-center">
 					<div className="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
 						<svg
@@ -60,7 +61,7 @@ const RegistrationSuccessPage = () => {
 					</Link>
 				</div>
 			</div>
-		</div>
+		</PageContainer>
 	);
 };
 

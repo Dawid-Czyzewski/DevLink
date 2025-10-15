@@ -7,6 +7,7 @@ import FormHeader from "../components/common/FormHeader";
 import FormInput from "../components/common/FormInput";
 import CheckboxInput from "../components/common/CheckboxInput";
 import FormFooter from "../components/common/FormFooter";
+import PageContainer from "../components/common/PageContainer";
 import userService from "../services/userService";
 
 const RegisterPage = () => {
@@ -76,7 +77,6 @@ const RegisterPage = () => {
 				}
 			}
 		} catch (error) {
-			console.error("Registration error:", error);
 			showError(t("register.errorMessage") || "Registration failed. Please try again.");
 		} finally {
 			setIsLoading(false);
@@ -84,8 +84,8 @@ const RegisterPage = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-			<div className="max-w-md w-full space-y-8">
+		<PageContainer className="py-12">
+			<div className="w-full space-y-8">
 				<FormHeader 
 					titleKey="register.title" 
 					subtitleKey="register.subtitle" 
@@ -185,7 +185,7 @@ const RegisterPage = () => {
 					/>
 				</div>
 			</div>
-	  </div>
+		</PageContainer>
 	);
 };
 

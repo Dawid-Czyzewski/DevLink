@@ -49,10 +49,55 @@ class UserService {
         try {
             $this->emailService->sendWelcomeEmail($savedUser->getEmail(), $savedUser->getNickname(), $savedUser->getActivationToken());
         } catch (Exception $e) {
-            error_log("Failed to send welcome email to {$savedUser->getEmail()}: " . $e->getMessage());
         }
         
         return new UserResponseDTO($savedUser->toArray());
+    }
+
+    public function activateUser(UserActivationDTO $dto): array {
+        try {
+            $token = $dto->getToken();
+            
+            $user = $this->userRepository->findByActivationToken($token);
+            
+            if (!$user) {
+                return [
+                    'success' => false,
+                    'message' => 'activate.errors.invalidToken'
+                ];
+            }
+            
+            if ($user->getIsActive()) {
+                return [
+                    'success' => false,
+                    'message' => 'activate.errors.alreadyActivated'
+                ];
+            }
+            
+            $activated = $this->userRepository->activateUser($user->getId());
+            
+            if (!$activated) {
+                return [
+                    'success' => false,
+                    'message' => 'activate.errors.activationFailed'
+                ];
+            }
+            
+            $user->setIsActive(true);
+            $user->setActivationToken(null);
+            
+            return [
+                'success' => true,
+                'user' => $user,
+                'message' => 'activate.successMessage'
+            ];
+            
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => 'activate.errors.unexpectedError'
+            ];
+        }
     }
     
     public function getUserById(int $id): ?UserResponseDTO {

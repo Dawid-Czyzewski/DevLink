@@ -2,7 +2,7 @@
 
 function getWelcomeEmailTemplate(string $nickname, string $activationToken): string {
 	$config = require CONFIG_PATH . 'email.php';
-	$activationLink = $config['frontend_urls']['base_url'] . $config['frontend_urls']['activate_account'] . "?token={$activationToken}";
+	$activationLink = $config['frontend_urls']['base_url'] . "/#" . $config['frontend_urls']['activate_account'] . "?token={$activationToken}";
 	
 	return "
 	<!DOCTYPE html>

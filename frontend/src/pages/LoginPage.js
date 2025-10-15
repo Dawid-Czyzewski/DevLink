@@ -4,6 +4,7 @@ import FormHeader from "../components/common/FormHeader";
 import FormInput from "../components/common/FormInput";
 import RememberMeCheckbox from "../components/common/RememberMeCheckbox";
 import FormFooter from "../components/common/FormFooter";
+import PageContainer from "../components/common/PageContainer";
 
 const LoginPage = () => {
 	const { t } = useTranslation();
@@ -31,8 +32,8 @@ const LoginPage = () => {
 	};
 
 	return (
-	  <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-			<div className="max-w-md w-full space-y-8">
+		<PageContainer className="py-12">
+			<div className="w-full space-y-8">
 				<FormHeader 
 					titleKey="header.login" 
 					subtitleKey="login.welcomeMessage" 
@@ -75,7 +76,7 @@ const LoginPage = () => {
 
 						<button
 							type="submit"
-							className="w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold rounded-lg hover:from-yellow-500 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-yellow-500/50"
+							className="w-full py-3 px-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-semibold rounded-lg hover:from-yellow-500 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-gray-800 transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-yellow-500/50 cursor-pointer"
 						>
 							{t("header.login")}
 						</button>
@@ -88,7 +89,7 @@ const LoginPage = () => {
 					/>
 				</div>
 			</div>
-		</div>
+		</PageContainer>
 	);
 };
 

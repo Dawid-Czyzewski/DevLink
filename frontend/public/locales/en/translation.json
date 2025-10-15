@@ -74,5 +74,25 @@
             "unexpectedError": "An unexpected error occurred",
             "termsRequired": "You must accept the terms"
         }
+    },
+    "activate": {
+        "activating": "Activating Account",
+        "activatingMessage": "Please wait while we activate your account...",
+        "successTitle": "Account Activated!",
+        "successMessage": "Your account has been successfully activated. You can now log in and start using DevLink.",
+        "errorTitle": "Activation Failed",
+        "goToLogin": "Go to Login",
+        "goToHome": "Back to Home",
+        "status": {
+            "accountActivated": "Account Successfully Activated",
+            "activationFailed": "Activation Failed"
+        },
+        "errors": {
+            "tokenRequired": "Activation token is required",
+            "invalidToken": "Invalid or expired activation token",
+            "alreadyActivated": "Account is already activated",
+            "activationFailed": "Failed to activate account. Please try again.",
+            "unexpectedError": "An unexpected error occurred during activation"
+        }
     }
 }

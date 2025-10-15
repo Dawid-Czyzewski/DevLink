@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ActivatePage from './pages/ActivatePage';
 import RegistrationSuccessPage from './pages/RegistrationSuccessPage';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -20,6 +21,7 @@ function AppContent() {
 						<Routes>
 							<Route path="/login" element={<LoginPage />} />
 							<Route path="/register" element={<RegisterPage />} />
+							<Route path="/activate" element={<ActivatePage />} />
 							<Route path="/registration-success" element={<RegistrationSuccessPage />} />
 						</Routes>
 					</main>
