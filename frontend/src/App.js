@@ -7,6 +7,7 @@ import ActivatePage from './pages/ActivatePage';
 import RegistrationSuccessPage from './pages/RegistrationSuccessPage';
 import ProfilePage from './pages/ProfilePage';
 import PostAnnouncementPage from './pages/PostAnnouncementPage';
+import EditProfilePage from './pages/EditProfilePage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -44,6 +45,11 @@ function AppContent() {
 								<Route path="/post-announcement" element={
 									<ProtectedRoute requireAuth={true} allowUnauthenticated={true}>
 										<PostAnnouncementPage />
+									</ProtectedRoute>
+								} />
+								<Route path="/edit-profile" element={
+									<ProtectedRoute requireAuth={true}>
+										<EditProfilePage />
 									</ProtectedRoute>
 								} />
 							</Routes>

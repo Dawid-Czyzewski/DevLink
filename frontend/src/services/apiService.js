@@ -10,6 +10,7 @@ class ApiService {
 			headers: {
 				'Content-Type': 'application/json',
 			},
+			credentials: 'include',
 		};
 
 		const config = {

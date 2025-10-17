@@ -106,6 +106,27 @@ class UserService {
 		}
 	}
 
+	async updateProfile(profileData) {
+		try {
+			const response = await this.apiService.post('userController', 'updateProfile', profileData);
+			return {
+				success: true,
+				data: response.data,
+				message: response.message,
+			};
+		} catch (error) {
+			if (error instanceof ApiError) {
+				const customError = new Error(error.message);
+				customError.errors = error.errors;
+				throw customError;
+			}
+			
+			const unexpectedError = new Error('editProfile.errors.unexpectedError');
+			unexpectedError.errors = null;
+			throw unexpectedError;
+		}
+	}
+
 	async updateUser(userData) {
 		throw new Error('Update user not implemented yet');
 	}
@@ -143,4 +164,5 @@ class UserService {
 	}
 }
 
-export default new UserService();
+const userService = new UserService();
+export default userService;

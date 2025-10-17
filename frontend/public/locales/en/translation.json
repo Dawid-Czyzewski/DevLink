@@ -77,7 +77,63 @@
         "lastChat": {
             "title": "Last Chat",
             "noMessages": "No messages",
-            "startConversation": "Start a conversation in one of your offers"
+            "startConversation": "Start a conversation in one of your announcements"
+        }
+    },
+        "editProfile": {
+            "title": "Edit Profile",
+            "subtitle": "Complete your data and preferences",
+            "loading": "Loading data...",
+            "backToProfile": "Back to Profile",
+        "description": {
+            "title": "Description",
+            "subtitle": "Describe yourself and your skills",
+            "placeholder": "Write a few words about yourself, your skills and experience..."
+        },
+        "tags": {
+            "title": "Skill Tags",
+            "subtitle": "Add tags describing your technical skills",
+            "placeholder": "e.g. React, Node.js, Python...",
+            "help": "Press Enter or comma to add tag"
+        },
+        "category": {
+            "title": "Category",
+            "subtitle": "Choose your main specialization",
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "fullstack": "Fullstack",
+            "uxui": "UX/UI",
+            "pm": "Product Manager"
+        },
+        "experience": {
+            "title": "Experience",
+            "subtitle": "Define your professional experience",
+            "hasCommercial": "I have commercial experience",
+            "level": "Experience level",
+            "junior": "Junior",
+            "mid": "Mid",
+            "senior": "Senior"
+        },
+        "contact": {
+            "title": "Contact Information",
+            "subtitle": "Provide links to your profiles (optional)",
+            "github": "GitHub",
+            "website": "Website",
+            "linkedin": "LinkedIn"
+        },
+        "save": "Save Changes",
+        "saving": "Saving...",
+        "successMessage": "Profile updated successfully",
+        "errors": {
+            "unexpectedError": "An unexpected error occurred while updating profile",
+            "validationFailed": "Form contains validation errors",
+            "descriptionTooLong": "Description cannot exceed 1000 characters",
+            "tagsMustBeArray": "Tags must be an array",
+            "tooManyTags": "Maximum 20 tags allowed",
+            "tagTooLong": "Each tag must be a string with maximum 50 characters",
+            "invalidCategory": "Invalid category selected",
+            "invalidExperienceLevel": "Invalid experience level selected",
+            "invalidUrl": "Invalid URL format"
         }
     },
     "register": {

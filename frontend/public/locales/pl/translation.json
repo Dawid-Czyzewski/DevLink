@@ -80,6 +80,62 @@
             "startConversation": "Rozpocznij rozmowę w jednym z ogłoszeń"
         }
     },
+        "editProfile": {
+            "title": "Edytuj profil",
+            "subtitle": "Uzupełnij swoje dane i preferencje",
+            "loading": "Ładowanie danych...",
+            "backToProfile": "Powrót do profilu",
+        "description": {
+            "title": "Opis",
+            "subtitle": "Opisz siebie i swoje umiejętności",
+            "placeholder": "Napisz kilka słów o sobie, swoich umiejętnościach i doświadczeniu..."
+        },
+        "tags": {
+            "title": "Tagi umiejętności",
+            "subtitle": "Dodaj tagi opisujące Twoje umiejętności techniczne",
+            "placeholder": "np. React, Node.js, Python...",
+            "help": "Naciśnij Enter lub przecinek, aby dodać tag"
+        },
+        "category": {
+            "title": "Kategoria",
+            "subtitle": "Wybierz swoją główną specjalizację",
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "fullstack": "Fullstack",
+            "uxui": "UX/UI",
+            "pm": "Product Manager"
+        },
+        "experience": {
+            "title": "Doświadczenie",
+            "subtitle": "Określ swoje doświadczenie zawodowe",
+            "hasCommercial": "Mam doświadczenie komercyjne",
+            "level": "Poziom doświadczenia",
+            "junior": "Junior",
+            "mid": "Mid",
+            "senior": "Senior"
+        },
+        "contact": {
+            "title": "Dane kontaktowe",
+            "subtitle": "Podaj linki do swoich profili (opcjonalnie)",
+            "github": "GitHub",
+            "website": "Strona internetowa",
+            "linkedin": "LinkedIn"
+        },
+        "save": "Zapisz zmiany",
+        "saving": "Zapisywanie...",
+        "successMessage": "Profil został pomyślnie zaktualizowany",
+        "errors": {
+            "unexpectedError": "Wystąpił nieoczekiwany błąd podczas aktualizacji profilu",
+            "validationFailed": "Formularz zawiera błędy walidacji",
+            "descriptionTooLong": "Opis nie może przekraczać 1000 znaków",
+            "tagsMustBeArray": "Tagi muszą być tablicą",
+            "tooManyTags": "Maksymalnie 20 tagów dozwolonych",
+            "tagTooLong": "Każdy tag musi być ciągiem znaków o maksymalnie 50 znakach",
+            "invalidCategory": "Nieprawidłowa kategoria",
+            "invalidExperienceLevel": "Nieprawidłowy poziom doświadczenia",
+            "invalidUrl": "Nieprawidłowy format URL"
+        }
+    },
     "register": {
         "title": "Utwórz konto",
         "subtitle": "Dołącz do społeczności DevLink",

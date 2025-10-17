@@ -1,22 +1,27 @@
 <?php
 
 require_once MODELS_PATH . 'User.php';
+require_once MODELS_PATH . 'UserDetails.php';
 require_once REPOSITORIES_PATH . 'UserRepositoryInterface.php';
 require_once DTO_PATH . 'UserRegistrationDTO.php';
 require_once DTO_PATH . 'UserResponseDTO.php';
 require_once DTO_PATH . 'UserActivationDTO.php';
 require_once DTO_PATH . 'UserLoginDTO.php';
+require_once DTO_PATH . 'UserProfileUpdateDTO.php';
 require_once VALIDATORS_PATH . 'UserRegistrationValidator.php';
 require_once INTERFACES_PATH . 'EmailServiceInterface.php';
+require_once REPOSITORIES_PATH . 'UserDetailsRepository.php';
 
 class UserService {
     
     private $userRepository;
+    private $userDetailsRepository;
     private $validator;
     private $emailService;
     
     public function __construct(UserRepositoryInterface $userRepository, EmailServiceInterface $emailService = null) {
         $this->userRepository = $userRepository;
+        $this->userDetailsRepository = new UserDetailsRepository($userRepository->getConnection());
         $this->validator = new UserRegistrationValidator();
         $this->emailService = $emailService ?? new EmailService();
     }
@@ -213,12 +218,69 @@ class UserService {
                 return null;
             }
 
-            return new UserResponseDTO($user->toArray());
+            $userDetails = $this->userDetailsRepository->findByUserId($user->getId());
+            
+            $userArray = $user->toArray();
+            if ($userDetails) {
+                $userDetailsArray = $userDetails->toArray();
+                $userArray = array_merge($userArray, $userDetailsArray);
+            }
+
+            return new UserResponseDTO($userArray);
 
         } catch (Exception $e) {
             return null;
         }
     }
+
+        public function updateProfile(UserProfileUpdateDTO $dto): array {
+            $errors = $dto->validate();
+            if (!empty($errors)) {
+                throw new ValidationException($errors);
+            }
+            
+            $currentUser = $this->getCurrentUser();
+            if (!$currentUser) {
+                throw new Exception('User not authenticated');
+            }
+            
+            $user = $this->userRepository->findById($currentUser->id);
+            if (!$user) {
+                throw new Exception('User not found');
+            }
+            
+            $userDetails = $this->userDetailsRepository->findByUserId($user->getId());
+            
+            if (!$userDetails) {
+                $userDetails = new UserDetails();
+                $userDetails->setUserId($user->getId());
+            }
+            
+            $userDetails->setDescription($dto->getDescription())
+                       ->setTags($dto->getTags())
+                       ->setCategory($dto->getCategory())
+                       ->setHasCommercialExperience($dto->getHasCommercialExperience())
+                       ->setExperienceLevel($dto->getExperienceLevel())
+                       ->setGithubUrl($dto->getGithub())
+                       ->setWebsiteUrl($dto->getWebsite())
+                       ->setLinkedinUrl($dto->getLinkedin());
+            
+            $updatedUserDetails = $this->userDetailsRepository->save($userDetails);
+            
+            if (!$updatedUserDetails) {
+                throw new DatabaseException('Failed to update profile');
+            }
+            
+            $userArray = $user->toArray();
+            $userDetailsArray = $updatedUserDetails->toArray();
+            $combinedUser = array_merge($userArray, $userDetailsArray);
+            
+            return [
+                'success' => true,
+                'user' => new UserResponseDTO($combinedUser),
+                'message' => 'editProfile.successMessage'
+            ];
+        }
 
     private function generateActivationToken(): string {
         return bin2hex(random_bytes(32));

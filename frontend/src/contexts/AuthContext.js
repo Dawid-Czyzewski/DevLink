@@ -26,18 +26,38 @@ export const AuthProvider = ({ children }) => {
         try {
             setIsLoading(true);
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-            const storedUserData = localStorage.getItem('userData');
             
-            if (isLoggedIn && storedUserData) {
+            if (isLoggedIn) {
                 try {
-                    const userData = JSON.parse(storedUserData);
-                    setUser(userData);
-                    setIsAuthenticated(true);
-                } catch (parseError) {
-                    localStorage.removeItem('isLoggedIn');
-                    localStorage.removeItem('userData');
-                    setUser(null);
-                    setIsAuthenticated(false);
+                    const result = await userService.getCurrentUser();
+                    if (result.success && result.user) {
+                        setUser(result.user);
+                        setIsAuthenticated(true);
+                        localStorage.setItem('userData', JSON.stringify(result.user));
+                    } else {
+                        localStorage.removeItem('isLoggedIn');
+                        localStorage.removeItem('userData');
+                        setUser(null);
+                        setIsAuthenticated(false);
+                    }
+                } catch (error) {
+                    const storedUserData = localStorage.getItem('userData');
+                    if (storedUserData) {
+                        try {
+                            const userData = JSON.parse(storedUserData);
+                            setUser(userData);
+                            setIsAuthenticated(true);
+                        } catch (parseError) {
+                            localStorage.removeItem('isLoggedIn');
+                            localStorage.removeItem('userData');
+                            setUser(null);
+                            setIsAuthenticated(false);
+                        }
+                    } else {
+                        localStorage.removeItem('isLoggedIn');
+                        setUser(null);
+                        setIsAuthenticated(false);
+                    }
                 }
             } else {
                 setUser(null);

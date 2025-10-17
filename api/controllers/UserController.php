@@ -6,9 +6,12 @@ require_once SERVICES_PATH . 'EmailService.php';
 require_once DTO_PATH . 'UserRegistrationDTO.php';
 require_once DTO_PATH . 'UserActivationDTO.php';
 require_once DTO_PATH . 'UserLoginDTO.php';
+require_once DTO_PATH . 'UserProfileUpdateDTO.php';
 require_once EXCEPTIONS_PATH . 'ValidationException.php';
 require_once EXCEPTIONS_PATH . 'DatabaseException.php';
 require_once REPOSITORIES_PATH . 'UserRepository.php';
+require_once ENUMS_PATH . 'Category.php';
+require_once ENUMS_PATH . 'ExperienceLevel.php';
 
 class UserController extends BaseController {
     
@@ -154,6 +157,56 @@ class UserController extends BaseController {
             
         } catch (Exception $e) {
             Response::serverError('auth.errors.unexpectedError');
+        }
+    }
+
+    public function updateProfile() {
+        try {
+            if (!Request::isPost()) {
+                Response::error('Method not allowed', 405);
+            }
+            
+            $data = Request::getJsonInput();
+            
+            if (empty($data)) {
+                Response::error('No data received', 400);
+            }
+            
+            $dto = new UserProfileUpdateDTO($data);
+            $result = $this->userService->updateProfile($dto);
+            
+            if ($result['success']) {
+                Response::success([
+                    'user' => $result['user']->toArray()
+                ], 'editProfile.successMessage', 200);
+            } else {
+                Response::error($result['message'], 400);
+            }
+            
+        } catch (ValidationException $e) {
+            Response::validationError($e->getErrors());
+        } catch (DatabaseException $e) {
+            Response::serverError($e->getMessage());
+        } catch (Exception $e) {
+            Response::serverError('editProfile.errors.unexpectedError');
+        }
+    }
+
+    public function getProfileOptions() {
+        try {
+            if (!Request::isGet()) {
+                Response::error('Method not allowed', 405);
+            }
+            
+            $options = [
+                'categories' => Category::getAllLabels(),
+                'experienceLevels' => ExperienceLevel::getAllLabels()
+            ];
+            
+            Response::success($options, 'Profile options retrieved successfully', 200);
+            
+        } catch (Exception $e) {
+            Response::serverError('An unexpected error occurred while retrieving profile options');
         }
     }
 }

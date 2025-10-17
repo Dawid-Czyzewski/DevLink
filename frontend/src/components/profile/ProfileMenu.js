@@ -1,7 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const ProfileMenu = () => {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 
 	const menuItems = [
 		{
@@ -48,8 +50,13 @@ const ProfileMenu = () => {
 	];
 
 	const handleMenuClick = (itemId) => {
-		// Tutaj będzie logika dla każdego menu
-		console.log(`Clicked: ${itemId}`);
+		switch (itemId) {
+			case 'editProfile':
+				navigate('/edit-profile');
+				break;
+			default:
+				break;
+		}
 	};
 
 	return (

@@ -11,6 +11,10 @@ class UserRepository implements UserRepositoryInterface {
         $this->conn = $db;
     }
     
+    public function getConnection() {
+        return $this->conn;
+    }
+    
     public function save(User $user): User {
         if ($user->getId()) {
             return $this->update($user);
