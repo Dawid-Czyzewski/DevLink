@@ -1,7 +1,7 @@
 {
     "header": {
-        "findProjects": "Find Projects",
-        "postOffer": "Post Offer",
+        "findProjects": "Find Offer",
+        "postAnnouncement": "Add Announcement",
         "about": "About Us",
         "login": "Log In",
         "register": "Sign Up",
@@ -10,10 +10,10 @@
         "welcome": "Welcome"
     },
     "footer": {
-        "description": "Platform connecting developers with projects. Find your next project or recruit the best programmers.",
+        "description": "Platform connecting IT developers for collaborative projects. Find partners to bring your ideas to life.",
         "quickLinks": "Quick Links",
-        "findProjects": "Find Projects",
-        "postProject": "Post Project",
+        "findProjects": "Find Offer",
+        "postAnnouncement": "Add Announcement",
         "browse": "Browse",
         "about": "About Us",
         "contact": "Contact",
@@ -61,8 +61,24 @@
     },
     "profile": {
         "title": "Profile",
-        "welcomeMessage": "Welcome to your profile",
-        "comingSoon": "More features coming soon..."
+        "welcomeMessage": "Welcome",
+        "menu": {
+            "myAnnouncements": "My Announcements",
+            "chats": "Chats",
+            "editProfile": "Edit Profile",
+            "viewProfile": "View Profile",
+            "descriptions": {
+                "myAnnouncements": "Manage your announcements",
+                "chats": "Messages from announcements",
+                "editProfile": "Complete your data",
+                "viewProfile": "See how others see you"
+            }
+        },
+        "lastChat": {
+            "title": "Last Chat",
+            "noMessages": "No messages",
+            "startConversation": "Start a conversation in one of your offers"
+        }
     },
     "register": {
         "title": "Create Account",
@@ -129,5 +145,17 @@
             "activationFailed": "Failed to activate account. Please try again.",
             "unexpectedError": "An unexpected error occurred during activation"
         }
+    },
+    "authRequired": {
+        "title": "Login Required",
+        "message": "You must be logged in to add an offer.",
+        "loginButton": "Log In",
+        "noAccount": "Don't have an account?",
+        "registerLink": "Sign Up"
+    },
+    "postAnnouncement": {
+        "title": "Add Announcement",
+        "subtitle": "Publish your announcement and find partners for collaboration",
+        "authRequiredMessage": "You must be logged in to add an announcement."
     }
 }

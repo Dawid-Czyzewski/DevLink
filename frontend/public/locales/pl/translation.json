@@ -1,7 +1,7 @@
 {
     "header": {
-        "findProjects": "Szukaj projektów",
-        "postOffer": "Dodaj ogłoszenie",
+        "findProjects": "Znajdź ogłoszenie",
+        "postAnnouncement": "Dodaj ogłoszenie",
         "about": "O nas",
         "login": "Zaloguj się",
         "register": "Zarejestruj się",
@@ -10,10 +10,10 @@
         "welcome": "Witaj"
     },
     "footer": {
-        "description": "Platforma łącząca deweloperów z projektami. Znajdź swój następny projekt lub rekrutuj najlepszych programistów.",
+        "description": "Platforma łącząca programistów IT do wspólnych projektów. Znajdź partnerów do realizacji swoich pomysłów.",
         "quickLinks": "Szybkie linki",
-        "findProjects": "Szukaj projektów",
-        "postProject": "Dodaj projekt",
+        "findProjects": "Znajdź ogłoszenie",
+        "postAnnouncement": "Dodaj ogłoszenie",
         "browse": "Przeglądaj",
         "about": "O nas",
         "contact": "Kontakt",
@@ -61,8 +61,24 @@
     },
     "profile": {
         "title": "Profil",
-        "welcomeMessage": "Witaj w swoim profilu",
-        "comingSoon": "Więcej funkcji już wkrótce..."
+        "welcomeMessage": "Witaj",
+        "menu": {
+            "myAnnouncements": "Moje ogłoszenia",
+            "chats": "Czaty",
+            "editProfile": "Edytuj profil",
+            "viewProfile": "Zobacz profil",
+            "descriptions": {
+                "myAnnouncements": "Zarządzaj swoimi ogłoszeniami",
+                "chats": "Wiadomości z ogłoszeń",
+                "editProfile": "Uzupełnij swoje dane",
+                "viewProfile": "Zobacz jak widzą Cię inni"
+            }
+        },
+        "lastChat": {
+            "title": "Ostatni czat",
+            "noMessages": "Brak wiadomości",
+            "startConversation": "Rozpocznij rozmowę w jednym z ogłoszeń"
+        }
     },
     "register": {
         "title": "Utwórz konto",
@@ -129,5 +145,17 @@
             "activationFailed": "Nie udało się aktywować konta. Spróbuj ponownie.",
             "unexpectedError": "Wystąpił nieoczekiwany błąd podczas aktywacji"
         }
+    },
+    "authRequired": {
+        "title": "Wymagane logowanie",
+        "message": "Aby dodać ogłoszenie, musisz być zalogowany.",
+        "loginButton": "Zaloguj się",
+        "noAccount": "Nie masz konta?",
+        "registerLink": "Zarejestruj się"
+    },
+    "postAnnouncement": {
+        "title": "Dodaj ogłoszenie",
+        "subtitle": "Opublikuj swoje ogłoszenie i znajdź partnerów do współpracy",
+        "authRequiredMessage": "Aby dodać ogłoszenie, musisz być zalogowany."
     }
 }

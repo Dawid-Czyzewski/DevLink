@@ -4,7 +4,7 @@ const FooterLinks = ({ variant = "desktop" }) => {
   const { t } = useTranslation();
   const links = [
     { href: "#find-projects", key: "header.findProjects" },
-    { href: "#post-offer", key: "header.postOffer" },
+    { href: "#post-announcement", key: "header.postAnnouncement" },
     { href: "#about", key: "header.about" },
   ];
 
