@@ -7,13 +7,12 @@ import editProfileService from '../services/editProfileService';
 import { 
     EditProfileHeader,
     EditProfileForm,
-    EditProfileSubmitButton,
     EditProfileLoading
 } from '../components/editProfile';
 
 const EditProfilePage = () => {
     const { t } = useTranslation();
-    const { user, updateUser } = useAuth();
+    const { user, updateUser, isLoading: authLoading } = useAuth();
     const { addToast } = useToast();
     
     const [formData, setFormData] = useState(editProfileService.initializeFormData(user));
@@ -66,7 +65,7 @@ const EditProfilePage = () => {
         }
     };
 
-    if (!user) {
+    if (!user || authLoading) {
         return <EditProfileLoading />;
     }
 
@@ -83,10 +82,6 @@ const EditProfilePage = () => {
                         handleTagsChange={handleTagsChange}
                         handleCheckboxChange={handleCheckboxChange}
                         handleSubmit={handleSubmit}
-                        isLoading={isLoading}
-                    />
-                    
-                    <EditProfileSubmitButton
                         isLoading={isLoading}
                     />
                 </div>

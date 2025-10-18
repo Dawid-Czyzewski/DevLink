@@ -96,17 +96,17 @@
             "placeholder": "np. React, Node.js, Python...",
             "help": "Naciśnij Enter lub przecinek, aby dodać tag"
         },
-        "category": {
-            "title": "Kategoria",
-            "subtitle": "Wybierz swoją główną specjalizację",
+            "category": {
+                "title": "Najwięcej doświadczenia mam w",
+                "subtitle": "Wybierz swoją główną specjalizację",
             "frontend": "Frontend",
             "backend": "Backend",
             "fullstack": "Fullstack",
             "uxui": "UX/UI",
             "pm": "Product Manager"
         },
-        "experience": {
-            "title": "Doświadczenie",
+            "experience": {
+                "title": "Poziom doświadczenia komercyjnego",
             "subtitle": "Określ swoje doświadczenie zawodowe",
             "hasCommercial": "Mam doświadczenie komercyjne",
             "level": "Poziom doświadczenia",
@@ -209,9 +209,56 @@
         "noAccount": "Nie masz konta?",
         "registerLink": "Zarejestruj się"
     },
-    "postAnnouncement": {
-        "title": "Dodaj ogłoszenie",
-        "subtitle": "Opublikuj swoje ogłoszenie i znajdź partnerów do współpracy",
-        "authRequiredMessage": "Aby dodać ogłoszenie, musisz być zalogowany."
+        "postAnnouncement": {
+            "title": "Dodaj ogłoszenie",
+            "subtitle": "Opublikuj swoje ogłoszenie i znajdź partnerów do współpracy",
+            "authRequiredMessage": "Aby dodać ogłoszenie, musisz być zalogowany."
+        },
+        "viewProfile": {
+            "title": "Podgląd profilu",
+            "subtitle": "Zobacz jak widzą Cię inni użytkownicy",
+            "loading": "Ładowanie profilu...",
+            "backToProfile": "Powrót do profilu",
+            "errors": {
+                "userNotFound": "Nie podano ID użytkownika",
+                "profileNotFound": "Profil nie znaleziony",
+                "loadFailed": "Nie udało się załadować profilu",
+                "notFoundTitle": "Profil nie znaleziony",
+                "notFoundMessage": "Profil, którego szukasz, nie istnieje.",
+                "userNotFoundMessage": "Profil użytkownika, którego szukasz, nie istnieje."
+            },
+            "category": {
+                "title": "Najwięcej doświadczenia mam w",
+                "noCategory": "Użytkownik nie określił swojej specjalizacji"
+            },
+            "description": {
+                "title": "Opis",
+                "noDescription": "Użytkownik nie dodał opisu"
+            },
+            "tags": {
+                "title": "Umiejętności",
+                "noTags": "Użytkownik nie dodał umiejętności"
+            },
+            "experience": {
+                "title": "Poziom doświadczenia komercyjnego",
+                "category": "Kategoria",
+                "level": "Poziom",
+                "commercial": "Doświadczenie komercyjne",
+                "hasCommercial": "Tak",
+                "noExperience": "Użytkownik nie dodał informacji o doświadczeniu"
+            },
+            "contact": {
+                "title": "Kontakt",
+                "github": "GitHub",
+                "website": "Strona internetowa",
+                "linkedin": "LinkedIn",
+                "noContact": "Użytkownik nie dodał danych kontaktowych"
+            },
+            "status": {
+                "online": "Online"
+            }
+        },
+    "common": {
+        "back": "Powrót"
     }
 }

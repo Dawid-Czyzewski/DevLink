@@ -106,6 +106,31 @@ class UserService {
 		}
 	}
 
+	async getUserById(userId) {
+		try {
+			const response = await this.apiService.get('userController', 'getUserById', { userId });
+			return {
+				success: true,
+				user: response.data.user,
+				message: response.message,
+			};
+		} catch (error) {
+			if (error instanceof ApiError) {
+				return {
+					success: false,
+					message: error.message,
+					errors: error.errors,
+				};
+			}
+			
+			return {
+				success: false,
+				message: 'auth.errors.unexpectedError',
+				errors: null,
+			};
+		}
+	}
+
 	async updateProfile(profileData) {
 		try {
 			const response = await this.apiService.post('userController', 'updateProfile', profileData);

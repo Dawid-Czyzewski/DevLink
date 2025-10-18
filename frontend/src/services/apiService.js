@@ -1,6 +1,6 @@
 class ApiService {
 	constructor() {
-		this.baseURL = 'http://localhost:8001/index.php';
+		this.baseURL = 'http://localhost:8001';
 	}
 
 	async request(endpoint, options = {}) {

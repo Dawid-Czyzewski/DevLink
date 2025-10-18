@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import userService from '../services/userService';
 
@@ -13,17 +13,36 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(() => {
+        const storedUserData = localStorage.getItem('userData');
+        if (storedUserData) {
+            try {
+                return JSON.parse(storedUserData);
+            } catch (error) {
+                return null;
+            }
+        }
+        return null;
+    });
+    const [isLoading, setIsLoading] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(() => {
+        return localStorage.getItem('isLoggedIn') === 'true';
+    });
     const navigate = useNavigate();
 
-    useEffect(() => {
-        checkAuthStatus();
-    }, []);
-
-    const checkAuthStatus = async () => {
+    const checkAuthStatus = useCallback(async () => {
         try {
+            if (window.location.hash.includes('/view-profile/') || 
+                window.location.hash.includes('/edit-profile') ||
+                window.location.hash.includes('/activate') ||
+                window.location.hash.includes('/registration-success')) {
+                return;
+            }
+            
+            if (isAuthenticated && user) {
+                return;
+            }
+            
             setIsLoading(true);
             const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
             
@@ -71,7 +90,7 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, [isAuthenticated, user]);
 
     const login = async (loginData) => {
         try {
@@ -94,8 +113,19 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-    const verifySession = async () => {
+    const verifySession = useCallback(async () => {
         if (!isAuthenticated) return true;
+        
+        if (window.location.hash.includes('/view-profile/') || 
+            window.location.hash.includes('/edit-profile') ||
+            window.location.hash.includes('/activate') ||
+            window.location.hash.includes('/registration-success')) {
+            return true;
+        }
+        
+        if (isAuthenticated && user) {
+            return true;
+        }
         
         try {
             const result = await userService.getCurrentUser();
@@ -111,7 +141,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             return false;
         }
-    };
+    }, [isAuthenticated, user, navigate]);
 
     const logout = async () => {
         try {
@@ -132,7 +162,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('userData', JSON.stringify(userData));
     };
 
-    const value = {
+    const value = useMemo(() => ({
         user,
         isAuthenticated,
         isLoading,
@@ -141,7 +171,8 @@ export const AuthProvider = ({ children }) => {
         updateUser,
         checkAuthStatus,
         verifySession
-    };
+    }), [user, isAuthenticated, isLoading, checkAuthStatus, verifySession]);
+
 
     return (
         <AuthContext.Provider value={value}>

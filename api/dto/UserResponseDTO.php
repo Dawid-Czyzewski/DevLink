@@ -45,4 +45,20 @@ class UserResponseDTO {
             'linkedin' => $this->linkedin,
         ];
     }
+
+    public function toPublicArray() {
+        return [
+            'id' => $this->id,
+            'nickname' => $this->nickname,
+            'createdAt' => $this->createdAt,
+            'description' => $this->description,
+            'tags' => $this->tags,
+            'category' => $this->category,
+            'hasCommercialExperience' => $this->hasCommercialExperience,
+            'experienceLevel' => $this->experienceLevel,
+            'github' => $this->github,
+            'website' => $this->website,
+            'linkedin' => $this->linkedin,
+        ];
+    }
 }

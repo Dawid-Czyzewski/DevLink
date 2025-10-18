@@ -8,6 +8,7 @@ import RegistrationSuccessPage from './pages/RegistrationSuccessPage';
 import ProfilePage from './pages/ProfilePage';
 import PostAnnouncementPage from './pages/PostAnnouncementPage';
 import EditProfilePage from './pages/EditProfilePage';
+import ViewProfilePage from './pages/ViewProfilePage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -18,56 +19,57 @@ function AppContent() {
 	const { toasts, removeToast } = useToast();
 
 	return (
-		<LanguageProvider>
-			<HashRouter>
-				<AuthProvider>
-					<div className="min-h-screen flex flex-col">
-						<Header />
-						<main className="flex-1">
-							<Routes>
-								<Route path="/login" element={
-									<ProtectedRoute requireAuth={false}>
-										<LoginPage />
-									</ProtectedRoute>
-								} />
-								<Route path="/register" element={
-									<ProtectedRoute requireAuth={false}>
-										<RegisterPage />
-									</ProtectedRoute>
-								} />
-								<Route path="/activate" element={<ActivatePage />} />
-								<Route path="/registration-success" element={<RegistrationSuccessPage />} />
-								<Route path="/profile" element={
-									<ProtectedRoute requireAuth={true}>
-										<ProfilePage />
-									</ProtectedRoute>
-								} />
-								<Route path="/post-announcement" element={
-									<ProtectedRoute requireAuth={true} allowUnauthenticated={true}>
-										<PostAnnouncementPage />
-									</ProtectedRoute>
-								} />
-								<Route path="/edit-profile" element={
-									<ProtectedRoute requireAuth={true}>
-										<EditProfilePage />
-									</ProtectedRoute>
-								} />
-							</Routes>
-						</main>
-						<Footer />
-						<ToastContainer toasts={toasts} onRemoveToast={removeToast} />
-					</div>
-				</AuthProvider>
-			</HashRouter>
-		</LanguageProvider>
+		<div className="min-h-screen flex flex-col">
+			<Header />
+			<main className="flex-1">
+				<Routes>
+					<Route path="/login" element={
+						<ProtectedRoute requireAuth={false}>
+							<LoginPage />
+						</ProtectedRoute>
+					} />
+					<Route path="/register" element={
+						<ProtectedRoute requireAuth={false}>
+							<RegisterPage />
+						</ProtectedRoute>
+					} />
+					<Route path="/activate" element={<ActivatePage />} />
+					<Route path="/registration-success" element={<RegistrationSuccessPage />} />
+					<Route path="/profile" element={
+						<ProtectedRoute requireAuth={true}>
+							<ProfilePage />
+						</ProtectedRoute>
+					} />
+					<Route path="/post-announcement" element={
+						<ProtectedRoute requireAuth={true} allowUnauthenticated={true}>
+							<PostAnnouncementPage />
+						</ProtectedRoute>
+					} />
+					<Route path="/edit-profile" element={
+						<ProtectedRoute requireAuth={true}>
+							<EditProfilePage />
+						</ProtectedRoute>
+					} />
+					<Route path="/view-profile/:userId" element={<ViewProfilePage key="view-profile" />} />
+				</Routes>
+			</main>
+			<Footer />
+			<ToastContainer toasts={toasts} onRemoveToast={removeToast} />
+		</div>
 	);
 }
 
 function App() {
 	return (
-		<ToastProvider>
-			<AppContent />
-		</ToastProvider>
+		<HashRouter>
+			<LanguageProvider>
+				<ToastProvider>
+					<AuthProvider>
+						<AppContent />
+					</AuthProvider>
+				</ToastProvider>
+			</LanguageProvider>
+		</HashRouter>
 	);
 }
 

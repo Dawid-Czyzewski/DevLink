@@ -95,7 +95,6 @@ class UserController extends BaseController {
             }
             
             $dto = new UserLoginDTO($data);
-            
             $result = $this->userService->loginUser($dto);
             
             if ($result['success']) {
@@ -154,6 +153,33 @@ class UserController extends BaseController {
             } else {
                 Response::error('auth.notAuthenticated', 401);
             }
+            
+        } catch (Exception $e) {
+            Response::serverError('auth.errors.unexpectedError');
+        }
+    }
+
+    public function getUserById() {
+        try {
+            if (!Request::isGet()) {
+                Response::error('Method not allowed', 405);
+            }
+            
+            $userId = Request::get('userId');
+            
+            if (!$userId) {
+                Response::error('User ID is required', 400);
+            }
+            
+            $user = $this->userService->getUserById($userId);
+            
+                if ($user) {
+                    Response::success([
+                        'user' => $user->toPublicArray()
+                    ], 'auth.userFound', 200);
+                } else {
+                    Response::error('User not found', 404);
+                }
             
         } catch (Exception $e) {
             Response::serverError('auth.errors.unexpectedError');

@@ -51,12 +51,18 @@ const LoginPage = () => {
 				rememberMe: formData.rememberMe,
 			});
 
-			if (result.success) {
-				resetForm();
-				showSuccess(t("login.successMessage"));
-				setTimeout(() => {
-					navigate('/profile');
-				}, 1500);
+		if (result.success) {
+			resetForm();
+			showSuccess(t("login.successMessage"));
+
+			const urlParams = new URLSearchParams(window.location.search);
+			const redirectTo = urlParams.get('redirect');
+			
+			if (redirectTo) {
+				navigate(redirectTo);
+			} else {
+				navigate('/profile');
+			}
 			} else {
 				if (result.errors) {
 					const translatedErrors = {};

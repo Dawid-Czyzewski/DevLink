@@ -1,9 +1,29 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const ProfileMenu = () => {
 	const { t } = useTranslation();
 	const navigate = useNavigate();
+	const { user, isLoading } = useAuth();
+
+	if (isLoading || !user) {
+		return (
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+					{[1, 2, 3, 4].map((i) => (
+						<div key={i} className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6">
+							<div className="animate-pulse">
+								<div className="w-12 h-12 bg-gray-700 rounded-xl mb-3"></div>
+								<div className="h-6 bg-gray-700 rounded mb-2"></div>
+								<div className="h-4 bg-gray-700 rounded w-3/4"></div>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		);
+	}
 
 	const menuItems = [
 		{
@@ -53,6 +73,9 @@ const ProfileMenu = () => {
 		switch (itemId) {
 			case 'editProfile':
 				navigate('/edit-profile');
+				break;
+			case 'viewProfile':
+				navigate(`/view-profile/${user.id}`);
 				break;
 			default:
 				break;

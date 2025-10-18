@@ -96,17 +96,17 @@
             "placeholder": "e.g. React, Node.js, Python...",
             "help": "Press Enter or comma to add tag"
         },
-        "category": {
-            "title": "Category",
-            "subtitle": "Choose your main specialization",
+            "category": {
+                "title": "Most experience in",
+                "subtitle": "Choose your main specialization",
             "frontend": "Frontend",
             "backend": "Backend",
             "fullstack": "Fullstack",
             "uxui": "UX/UI",
             "pm": "Product Manager"
         },
-        "experience": {
-            "title": "Experience",
+            "experience": {
+                "title": "Commercial Experience Level",
             "subtitle": "Define your professional experience",
             "hasCommercial": "I have commercial experience",
             "level": "Experience level",
@@ -209,9 +209,56 @@
         "noAccount": "Don't have an account?",
         "registerLink": "Sign Up"
     },
-    "postAnnouncement": {
-        "title": "Add Announcement",
-        "subtitle": "Publish your announcement and find partners for collaboration",
-        "authRequiredMessage": "You must be logged in to add an announcement."
+        "postAnnouncement": {
+            "title": "Add Announcement",
+            "subtitle": "Publish your announcement and find partners for collaboration",
+            "authRequiredMessage": "You must be logged in to add an announcement."
+        },
+        "viewProfile": {
+            "title": "Profile Preview",
+            "subtitle": "See how other users see you",
+            "loading": "Loading profile...",
+            "backToProfile": "Back to Profile",
+            "errors": {
+                "userNotFound": "User ID not provided",
+                "profileNotFound": "Profile not found",
+                "loadFailed": "Failed to load profile",
+                "notFoundTitle": "Profile not found",
+                "notFoundMessage": "The profile you're looking for doesn't exist.",
+                "userNotFoundMessage": "The user profile you're looking for doesn't exist."
+            },
+            "category": {
+                "title": "Most experience in",
+                "noCategory": "User hasn't specified their specialization"
+            },
+            "description": {
+                "title": "Description",
+                "noDescription": "User hasn't added a description"
+            },
+            "tags": {
+                "title": "Skills",
+                "noTags": "User hasn't added any skills"
+            },
+            "experience": {
+                "title": "Commercial Experience Level",
+                "category": "Category",
+                "level": "Level",
+                "commercial": "Commercial Experience",
+                "hasCommercial": "Yes",
+                "noExperience": "User hasn't added experience information"
+            },
+            "contact": {
+                "title": "Contact",
+                "github": "GitHub",
+                "website": "Website",
+                "linkedin": "LinkedIn",
+                "noContact": "User hasn't added contact information"
+            },
+            "status": {
+                "online": "Online"
+            }
+        },
+    "common": {
+        "back": "Back"
     }
 }
