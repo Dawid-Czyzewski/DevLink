@@ -1,8 +1,8 @@
-import { ApiService, ApiError } from './apiService';
+import { ApiError, apiServiceInstance } from './apiService';
 
 class UserService {
 	constructor() {
-		this.apiService = new ApiService();
+		this.apiService = apiServiceInstance;
 	}
 
 	async register(userData) {

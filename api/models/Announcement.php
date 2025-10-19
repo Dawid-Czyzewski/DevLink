@@ -1,0 +1,114 @@
+<?php
+
+class Announcement {
+    private $id;
+    private $userId;
+    private $title;
+    private $description;
+    private $categories;
+    private $tags;
+    private $createdAt;
+    private $updatedAt;
+
+    public function __construct($data = []) {
+        if (!empty($data)) {
+            $this->id = $data['id'] ?? null;
+            $this->userId = $data['user_id'] ?? null;
+            $this->title = $data['title'] ?? '';
+            $this->description = $data['description'] ?? '';
+            $this->categories = $data['categories'] ?? [];
+            $this->tags = $data['tags'] ?? [];
+            $this->createdAt = $data['created_at'] ?? null;
+            $this->updatedAt = $data['updated_at'] ?? null;
+        }
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getUserId() {
+        return $this->userId;
+    }
+
+    public function getTitle() {
+        return $this->title;
+    }
+
+    public function getDescription() {
+        return $this->description;
+    }
+
+    public function getCategories() {
+        return $this->categories;
+    }
+
+    public function getTags() {
+        return $this->tags;
+    }
+
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function setUserId($userId) {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    public function setTitle($title) {
+        $this->title = $title;
+        return $this;
+    }
+
+    public function setDescription($description) {
+        $this->description = $description;
+        return $this;
+    }
+
+    public function setCategories($categories) {
+        $this->categories = $categories;
+        return $this;
+    }
+
+    public function setTags($tags) {
+        $this->tags = $tags;
+        return $this;
+    }
+
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    public function setUpdatedAt($updatedAt) {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    public function toArray() {
+        return [
+            'id' => $this->id,
+            'user_id' => $this->userId,
+            'title' => $this->title,
+            'description' => $this->description,
+            'categories' => $this->categories,
+            'tags' => $this->tags,
+            'created_at' => $this->createdAt,
+            'updated_at' => $this->updatedAt
+        ];
+    }
+
+    public function toJson() {
+        return json_encode($this->toArray());
+    }
+}

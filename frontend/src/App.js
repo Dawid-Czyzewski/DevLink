@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoginPage from './pages/LoginPage';
@@ -9,6 +10,7 @@ import ProfilePage from './pages/ProfilePage';
 import PostAnnouncementPage from './pages/PostAnnouncementPage';
 import EditProfilePage from './pages/EditProfilePage';
 import ViewProfilePage from './pages/ViewProfilePage';
+import MyAnnouncementsPage from './pages/MyAnnouncementsPage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -16,7 +18,19 @@ import { AuthProvider } from './contexts/AuthContext';
 import ToastContainer from './components/common/ToastContainer';
 
 function AppContent() {
-	const { toasts, removeToast } = useToast();
+	const { toasts, removeToast, showError } = useToast();
+
+	useEffect(() => {
+		const handleSessionExpired = (event) => {
+			showError(event.detail.message);
+		};
+
+		window.addEventListener('sessionExpired', handleSessionExpired);
+
+		return () => {
+			window.removeEventListener('sessionExpired', handleSessionExpired);
+		};
+	}, [showError]);
 
 	return (
 		<div className="min-h-screen flex flex-col">
@@ -51,6 +65,11 @@ function AppContent() {
 						</ProtectedRoute>
 					} />
 					<Route path="/view-profile/:userId" element={<ViewProfilePage key="view-profile" />} />
+					<Route path="/my-announcements" element={
+						<ProtectedRoute requireAuth={true}>
+							<MyAnnouncementsPage />
+						</ProtectedRoute>
+					} />
 				</Routes>
 			</main>
 			<Footer />

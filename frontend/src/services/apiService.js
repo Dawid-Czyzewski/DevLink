@@ -1,6 +1,11 @@
 class ApiService {
 	constructor() {
 		this.baseURL = 'http://localhost:8001';
+		this.onAuthError = null;
+	}
+
+	setAuthErrorHandler(handler) {
+		this.onAuthError = handler;
 	}
 
 	async request(endpoint, options = {}) {
@@ -32,6 +37,11 @@ class ApiService {
 				} catch (jsonError) {
 					throw new ApiError(`HTTP ${response.status}: ${response.statusText}`, response.status);
 				}
+
+				if (data.message === 'Authentication required' && this.onAuthError) {
+					this.onAuthError();
+				}
+				
 				throw new ApiError(data.message || 'Request failed', response.status, data.errors);
 			}
 
@@ -84,10 +94,11 @@ class ApiService {
 		});
 	}
 
-	async delete(controller, action) {
+	async delete(controller, action, params = {}) {
 		const queryParams = new URLSearchParams({
 			controller,
 			action,
+			...params,
 		});
 
 		return this.request(`?${queryParams}`, {
@@ -105,4 +116,6 @@ class ApiError extends Error {
 	}
 }
 
-export { ApiService, ApiError };
+const apiServiceInstance = new ApiService();
+
+export { ApiService, ApiError, apiServiceInstance };

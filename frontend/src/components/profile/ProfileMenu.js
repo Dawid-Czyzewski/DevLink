@@ -71,6 +71,11 @@ const ProfileMenu = () => {
 
 	const handleMenuClick = (itemId) => {
 		switch (itemId) {
+			case 'myAnnouncements':
+				navigate('/my-announcements');
+				break;
+			case 'chats':
+				break;
 			case 'editProfile':
 				navigate('/edit-profile');
 				break;

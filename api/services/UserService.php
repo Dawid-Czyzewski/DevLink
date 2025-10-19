@@ -150,7 +150,6 @@ class UserService {
                 ];
             }
 
-            session_start();
             $_SESSION['user_id'] = $user->getId();
             $_SESSION['user_email'] = $user->getEmail();
             $_SESSION['user_nickname'] = $user->getNickname();
@@ -180,7 +179,6 @@ class UserService {
 
     public function logoutUser(): bool {
         try {
-            session_start();
             session_destroy();
             return true;
         } catch (Exception $e) {
@@ -190,8 +188,6 @@ class UserService {
 
     public function getCurrentUser(): ?UserResponseDTO {
         try {
-            session_start();
-            
             if (!isset($_SESSION['user_id']) || !isset($_SESSION['expires'])) {
                 return null;
             }

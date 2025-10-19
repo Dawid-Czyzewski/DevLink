@@ -1,6 +1,8 @@
-import { createContext, useContext, useState, useMemo, useCallback } from 'react';
+import { createContext, useContext, useState, useMemo, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import userService from '../services/userService';
+import { apiServiceInstance } from '../services/apiService';
 
 const AuthContext = createContext();
 
@@ -29,6 +31,24 @@ export const AuthProvider = ({ children }) => {
         return localStorage.getItem('isLoggedIn') === 'true';
     });
     const navigate = useNavigate();
+    const { t } = useTranslation();
+
+    const handleAuthError = useCallback(async () => {
+        setUser(null);
+        setIsAuthenticated(false);
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userData');
+        
+        window.dispatchEvent(new CustomEvent('sessionExpired', { 
+            detail: { message: t('auth.sessionExpired') } 
+        }));
+        
+        navigate('/login');
+    }, [navigate, t]);
+
+    useEffect(() => {
+        apiServiceInstance.setAuthErrorHandler(handleAuthError);
+    }, [handleAuthError]);
 
     const checkAuthStatus = useCallback(async () => {
         try {

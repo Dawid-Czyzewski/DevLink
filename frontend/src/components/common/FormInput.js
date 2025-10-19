@@ -11,6 +11,7 @@ const FormInput = ({
 	onBlur,
 	error,
 	touched,
+	required = false,
 }) => {
 	const hasError = error && touched;
 
@@ -20,7 +21,7 @@ const FormInput = ({
 				htmlFor={id}
 				className="block text-sm font-medium text-gray-300 mb-2"
 			>
-				{label}
+				{label} {required && <span className="text-red-400">*</span>}
 			</label>
 			<input
 				id={id}

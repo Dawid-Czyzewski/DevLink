@@ -48,6 +48,7 @@
     "auth": {
         "userFound": "Użytkownik znaleziony",
         "notAuthenticated": "Nie zalogowano",
+        "sessionExpired": "Twoja sesja wygasła. Zaloguj się ponownie.",
         "errors": {
             "unexpectedError": "Wystąpił nieoczekiwany błąd"
         }
@@ -212,7 +213,35 @@
         "postAnnouncement": {
             "title": "Dodaj ogłoszenie",
             "subtitle": "Opublikuj swoje ogłoszenie i znajdź partnerów do współpracy",
-            "authRequiredMessage": "Aby dodać ogłoszenie, musisz być zalogowany."
+            "authRequiredMessage": "Aby dodać ogłoszenie, musisz być zalogowany.",
+            "successMessage": "Ogłoszenie zostało pomyślnie utworzone!",
+            "errorMessage": "Nie udało się utworzyć ogłoszenia. Spróbuj ponownie.",
+            "form": {
+                "title": "Tytuł",
+                "titlePlaceholder": "Wprowadź chwytliwy tytuł swojego projektu",
+                "description": "Opis",
+                "descriptionPlaceholder": "Opisz swój projekt szczegółowo...",
+                "categories": "Kategorie",
+                "categoriesHelp": "Wybierz jakiego typu osoby szukasz do swojego projektu",
+                "tags": "Technologie",
+                "tagsPlaceholder": "np. React, Node.js, Python...",
+                "submit": "Utwórz ogłoszenie",
+                "submitting": "Tworzenie..."
+            },
+            "categories": {
+                "frontend": "Frontend",
+                "backend": "Backend",
+                "fullstack": "Fullstack",
+                "uxui": "UX/UI",
+                "pm": "Product Manager"
+            },
+            "errors": {
+                "validationFailed": "Formularz zawiera błędy walidacji",
+                "titleRequired": "Tytuł jest wymagany",
+                "descriptionRequired": "Opis jest wymagany",
+                "descriptionTooLong": "Opis nie może przekraczać 2000 znaków",
+                "categoriesRequired": "Wymagana jest co najmniej jedna kategoria"
+            }
         },
         "viewProfile": {
             "title": "Podgląd profilu",
@@ -259,6 +288,49 @@
             }
         },
     "common": {
-        "back": "Powrót"
+        "back": "Powrót",
+        "cancel": "Anuluj"
+    },
+    "myAnnouncements": {
+        "title": "Moje Ogłoszenia",
+        "subtitle": "Zarządzaj swoimi ogłoszeniami projektowymi i znajdź współpracowników",
+        "addNew": "Dodaj Nowe Ogłoszenie",
+        "loading": "Ładowanie ogłoszeń...",
+        "authRequiredMessage": "Musisz być zalogowany, aby zobaczyć swoje ogłoszenia.",
+        "search": {
+            "title": "Wyszukaj Ogłoszenia",
+            "subtitle": "Filtruj swoje ogłoszenia według tytułu, tagów lub kategorii",
+            "titleField": "Tytuł",
+            "titlePlaceholder": "Szukaj po tytule...",
+            "tagsField": "Tagi",
+            "tagsPlaceholder": "Wprowadź tagi oddzielone przecinkami...",
+            "categoriesField": "Kategorie",
+            "clearFilters": "Wyczyść Filtry"
+        },
+        "list": {
+            "title": "Twoje Ogłoszenia",
+            "count": "{{count}} ogłoszeń"
+        },
+        "empty": {
+            "title": "Nie znaleziono ogłoszeń",
+            "message": "Nie utworzyłeś jeszcze żadnych ogłoszeń. Kliknij 'Dodaj Nowe Ogłoszenie', aby zacząć."
+        },
+        "actions": {
+            "edit": "Edytuj",
+            "delete": "Usuń",
+            "chats": "Zobacz Czaty",
+            "copyLink": "Skopiuj Link"
+        },
+        "confirmDelete": "Usuń Ogłoszenie",
+        "confirmDeleteMessage": "Czy na pewno chcesz usunąć to ogłoszenie? Ta akcja nie może zostać cofnięta.",
+        "success": {
+            "deleted": "Ogłoszenie zostało usunięte pomyślnie",
+            "linkCopied": "Link został skopiowany do schowka"
+        },
+        "errors": {
+            "loadFailed": "Nie udało się załadować ogłoszeń",
+            "deleteFailed": "Nie udało się usunąć ogłoszenia",
+            "linkCopyFailed": "Nie udało się skopiować linku"
+        }
     }
 }

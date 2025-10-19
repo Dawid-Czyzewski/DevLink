@@ -48,6 +48,7 @@
     "auth": {
         "userFound": "User found",
         "notAuthenticated": "Not authenticated",
+        "sessionExpired": "Your session has expired. Please log in again.",
         "errors": {
             "unexpectedError": "An unexpected error occurred"
         }
@@ -212,7 +213,35 @@
         "postAnnouncement": {
             "title": "Add Announcement",
             "subtitle": "Publish your announcement and find partners for collaboration",
-            "authRequiredMessage": "You must be logged in to add an announcement."
+            "authRequiredMessage": "You must be logged in to add an announcement.",
+            "successMessage": "Announcement created successfully!",
+            "errorMessage": "Failed to create announcement. Please try again.",
+            "form": {
+                "title": "Title",
+                "titlePlaceholder": "Enter a catchy title for your project",
+                "description": "Description",
+                "descriptionPlaceholder": "Describe your project in detail...",
+                "categories": "Categories",
+                "categoriesHelp": "Select what type of person you are looking for for your project",
+                "tags": "Technologies",
+                "tagsPlaceholder": "e.g. React, Node.js, Python...",
+                "submit": "Create Announcement",
+                "submitting": "Creating..."
+            },
+            "categories": {
+                "frontend": "Frontend",
+                "backend": "Backend",
+                "fullstack": "Fullstack",
+                "uxui": "UX/UI",
+                "pm": "Product Manager"
+            },
+            "errors": {
+                "validationFailed": "Form contains validation errors",
+                "titleRequired": "Title is required",
+                "descriptionRequired": "Description is required",
+                "descriptionTooLong": "Description cannot exceed 2000 characters",
+                "categoriesRequired": "At least one category is required"
+            }
         },
         "viewProfile": {
             "title": "Profile Preview",
@@ -259,6 +288,49 @@
             }
         },
     "common": {
-        "back": "Back"
+        "back": "Back",
+        "cancel": "Cancel"
+    },
+    "myAnnouncements": {
+        "title": "My Announcements",
+        "subtitle": "Manage your project announcements and find collaborators",
+        "addNew": "Add New Announcement",
+        "loading": "Loading announcements...",
+        "authRequiredMessage": "You must be logged in to view your announcements.",
+        "search": {
+            "title": "Search Announcements",
+            "subtitle": "Filter your announcements by title, tags, or categories",
+            "titleField": "Title",
+            "titlePlaceholder": "Search by title...",
+            "tagsField": "Tags",
+            "tagsPlaceholder": "Enter tags separated by commas...",
+            "categoriesField": "Categories",
+            "clearFilters": "Clear Filters"
+        },
+        "list": {
+            "title": "Your Announcements",
+            "count": "{{count}} announcement(s)"
+        },
+        "empty": {
+            "title": "No announcements found",
+            "message": "You haven't created any announcements yet. Click 'Add New Announcement' to get started."
+        },
+        "actions": {
+            "edit": "Edit",
+            "delete": "Delete",
+            "chats": "View Chats",
+            "copyLink": "Copy Link"
+        },
+        "confirmDelete": "Delete Announcement",
+        "confirmDeleteMessage": "Are you sure you want to delete this announcement? This action cannot be undone.",
+        "success": {
+            "deleted": "Announcement deleted successfully",
+            "linkCopied": "Link copied to clipboard"
+        },
+        "errors": {
+            "loadFailed": "Failed to load announcements",
+            "deleteFailed": "Failed to delete announcement",
+            "linkCopyFailed": "Failed to copy link"
+        }
     }
 }
