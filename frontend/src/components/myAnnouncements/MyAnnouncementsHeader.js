@@ -6,7 +6,7 @@ const MyAnnouncementsHeader = ({ onAddNew }) => {
     const navigate = useNavigate();
 
     const handleGoBack = () => {
-        navigate(-1);
+        navigate('/profile');
     };
 
     return (

@@ -285,8 +285,23 @@
             },
             "status": {
                 "online": "Online"
-            }
+        }
+    },
+    "editAnnouncement": {
+        "title": "Edytuj Ogłoszenie",
+        "subtitle": "Zaktualizuj informacje o swoim ogłoszeniu",
+        "authRequiredMessage": "Musisz być zalogowany, aby edytować ogłoszenia.",
+        "successMessage": "Ogłoszenie zostało pomyślnie zaktualizowane!",
+        "errorMessage": "Nie udało się zaktualizować ogłoszenia. Spróbuj ponownie.",
+        "form": {
+            "update": "Zaktualizuj Ogłoszenie",
+            "updating": "Aktualizowanie..."
         },
+        "errors": {
+            "loadFailed": "Nie udało się załadować ogłoszenia",
+            "notFound": "Ogłoszenie nie zostało znalezione"
+        }
+    },
     "common": {
         "back": "Powrót",
         "cancel": "Anuluj"

@@ -11,6 +11,7 @@ import PostAnnouncementPage from './pages/PostAnnouncementPage';
 import EditProfilePage from './pages/EditProfilePage';
 import ViewProfilePage from './pages/ViewProfilePage';
 import MyAnnouncementsPage from './pages/MyAnnouncementsPage';
+import EditAnnouncementPage from './pages/EditAnnouncementPage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -68,6 +69,11 @@ function AppContent() {
 					<Route path="/my-announcements" element={
 						<ProtectedRoute requireAuth={true}>
 							<MyAnnouncementsPage />
+						</ProtectedRoute>
+					} />
+					<Route path="/edit-announcement/:id" element={
+						<ProtectedRoute requireAuth={true}>
+							<EditAnnouncementPage />
 						</ProtectedRoute>
 					} />
 				</Routes>

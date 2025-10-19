@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import TagsInput from '../common/TagsInput';
-import ErrorMessage from '../common/ErrorMessage';
 
 const MyAnnouncementsSearch = ({ onSearch }) => {
     const { t } = useTranslation();
@@ -51,7 +50,6 @@ const MyAnnouncementsSearch = ({ onSearch }) => {
 
     return (
         <div className="space-y-4 lg:space-y-6">
-            {/* Header */}
             <div className="text-center mb-6 lg:mb-8">
                 <div className="inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-2xl mb-3 lg:mb-4">
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">

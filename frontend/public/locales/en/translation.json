@@ -285,8 +285,23 @@
             },
             "status": {
                 "online": "Online"
-            }
+        }
+    },
+    "editAnnouncement": {
+        "title": "Edit Announcement",
+        "subtitle": "Update your announcement information",
+        "authRequiredMessage": "You must be logged in to edit announcements.",
+        "successMessage": "Announcement has been successfully updated!",
+        "errorMessage": "Failed to update announcement. Please try again.",
+        "form": {
+            "update": "Update Announcement",
+            "updating": "Updating..."
         },
+        "errors": {
+            "loadFailed": "Failed to load announcement",
+            "notFound": "Announcement not found"
+        }
+    },
     "common": {
         "back": "Back",
         "cancel": "Cancel"

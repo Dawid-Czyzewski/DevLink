@@ -83,14 +83,16 @@ class ApiService {
 	}
 
 	async put(controller, action, data = {}) {
+		const { id, ...bodyData } = data;
 		const queryParams = new URLSearchParams({
 			controller,
 			action,
+			...(id && { id }),
 		});
 
 		return this.request(`?${queryParams}`, {
 			method: 'PUT',
-			body: JSON.stringify(data),
+			body: JSON.stringify(bodyData),
 		});
 	}
 

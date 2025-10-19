@@ -98,8 +98,8 @@ const MyAnnouncementsPage = () => {
     }, [addToast]);
 
     const handleEditAnnouncement = useCallback((id) => {
-        addToast('Funkcja edycji będzie wkrótce dostępna', 'info', 3000);
-    }, [addToast]);
+        window.location.hash = `#/edit-announcement/${id}`;
+    }, []);
 
     const handleAddNew = useCallback(() => {
         window.location.hash = '#/post-announcement';
