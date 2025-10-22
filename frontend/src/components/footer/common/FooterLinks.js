@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const FooterLinks = ({ variant = "desktop" }) => {
   const { t } = useTranslation();
   const links = [
-    { href: "#find-projects", key: "header.findProjects" },
-    { href: "#post-announcement", key: "header.postAnnouncement" },
-    { href: "#about", key: "header.about" },
+    { href: "/", key: "header.homePage", isRouter: true },
+    { href: "#post-announcement", key: "header.postAnnouncement", isRouter: false },
+    { href: "#about", key: "header.about", isRouter: false },
   ];
 
   const containerClass = variant === "mobile" 
@@ -18,15 +19,29 @@ const FooterLinks = ({ variant = "desktop" }) => {
 
   return (
     <div className={containerClass}>
-      {links.map((link) => (
-        <a
-          key={link.href}
-          href={link.href}
-          className={linkClass}
-        >
-          {t(link.key)}
-        </a>
-      ))}
+      {links.map((link) => {
+        if (link.isRouter) {
+          return (
+            <Link
+              key={link.href}
+              to={link.href}
+              className={linkClass}
+            >
+              {t(link.key)}
+            </Link>
+          );
+        } else {
+          return (
+            <a
+              key={link.href}
+              href={link.href}
+              className={linkClass}
+            >
+              {t(link.key)}
+            </a>
+          );
+        }
+      })}
     </div>
   );
 };

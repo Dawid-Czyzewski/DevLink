@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-export const AnnouncementActionsMobile = ({ announcement, onEdit, onViewChats, onCopyLink, onDeleteClick }) => {
+export const AnnouncementActionsMobile = ({ announcement, onEdit, onViewChats, onViewAnnouncement, onDeleteClick }) => {
     const { t } = useTranslation();
 
     return (
@@ -26,13 +26,14 @@ export const AnnouncementActionsMobile = ({ announcement, onEdit, onViewChats, o
             </button>
 
             <button
-                onClick={() => onCopyLink(announcement.id)}
+                onClick={() => onViewAnnouncement(announcement.id)}
                 className="flex items-center justify-center px-3 py-2 bg-purple-600/80 hover:bg-purple-600 text-white text-xs rounded-lg transition-all duration-200 cursor-pointer"
             >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
-                {t('myAnnouncements.actions.copyLink')}
+                {t('myAnnouncements.actions.viewAnnouncement')}
             </button>
 
             <button
@@ -48,7 +49,7 @@ export const AnnouncementActionsMobile = ({ announcement, onEdit, onViewChats, o
     );
 };
 
-export const AnnouncementActionsDesktop = ({ announcement, onEdit, onViewChats, onCopyLink, onDeleteClick }) => {
+export const AnnouncementActionsDesktop = ({ announcement, onEdit, onViewChats, onViewAnnouncement, onDeleteClick }) => {
     const { t } = useTranslation();
 
     return (
@@ -77,12 +78,13 @@ export const AnnouncementActionsDesktop = ({ announcement, onEdit, onViewChats, 
 
             <div className="flex gap-2">
                 <button
-                    onClick={() => onCopyLink(announcement.id)}
+                    onClick={() => onViewAnnouncement(announcement.id)}
                     className="group/btn flex-1 flex items-center justify-center px-3 py-2 bg-purple-600/80 hover:bg-purple-600 text-white text-xs rounded-lg transition-all duration-200 transform hover:scale-105 cursor-pointer"
-                    title={t('myAnnouncements.actions.copyLink')}
+                    title={t('myAnnouncements.actions.viewAnnouncement')}
                 >
                     <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
                 </button>
 

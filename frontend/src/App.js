@@ -12,6 +12,8 @@ import EditProfilePage from './pages/EditProfilePage';
 import ViewProfilePage from './pages/ViewProfilePage';
 import MyAnnouncementsPage from './pages/MyAnnouncementsPage';
 import EditAnnouncementPage from './pages/EditAnnouncementPage';
+import ViewAnnouncementPage from './pages/ViewAnnouncementPage';
+import HomePage from './pages/HomePage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -38,6 +40,7 @@ function AppContent() {
 			<Header />
 			<main className="flex-1">
 				<Routes>
+					<Route path="/" element={<HomePage />} />
 					<Route path="/login" element={
 						<ProtectedRoute requireAuth={false}>
 							<LoginPage />
@@ -76,6 +79,7 @@ function AppContent() {
 							<EditAnnouncementPage />
 						</ProtectedRoute>
 					} />
+					<Route path="/view-announcement/:id" element={<ViewAnnouncementPage />} />
 				</Routes>
 			</main>
 			<Footer />

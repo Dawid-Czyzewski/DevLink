@@ -3,6 +3,7 @@
 class Announcement {
     private $id;
     private $userId;
+    private $userName;
     private $title;
     private $description;
     private $categories;
@@ -14,6 +15,7 @@ class Announcement {
         if (!empty($data)) {
             $this->id = $data['id'] ?? null;
             $this->userId = $data['user_id'] ?? null;
+            $this->userName = $data['user_name'] ?? null;
             $this->title = $data['title'] ?? '';
             $this->description = $data['description'] ?? '';
             $this->categories = $data['categories'] ?? [];
@@ -29,6 +31,10 @@ class Announcement {
 
     public function getUserId() {
         return $this->userId;
+    }
+
+    public function getUserName() {
+        return $this->userName;
     }
 
     public function getTitle() {
@@ -62,6 +68,11 @@ class Announcement {
 
     public function setUserId($userId) {
         $this->userId = $userId;
+        return $this;
+    }
+
+    public function setUserName($userName) {
+        $this->userName = $userName;
         return $this;
     }
 
@@ -99,6 +110,7 @@ class Announcement {
         return [
             'id' => $this->id,
             'user_id' => $this->userId,
+            'user_name' => $this->userName,
             'title' => $this->title,
             'description' => $this->description,
             'categories' => $this->categories,

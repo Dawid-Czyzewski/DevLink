@@ -11,7 +11,7 @@ import {
     AnnouncementActionsDesktop
 } from './MyAnnouncementsItemActions';
 
-const MyAnnouncementsItem = ({ announcement, onDelete, onCopyLink, onViewChats, onEdit }) => {
+const MyAnnouncementsItem = ({ announcement, onDelete, onViewAnnouncement, onViewChats, onEdit }) => {
     const { t } = useTranslation();
     const { formatDate, getCategoryLabel } = useAnnouncementsUtils();
     const [deleteModal, setDeleteModal] = useState({ isOpen: false, announcementId: null });
@@ -42,7 +42,7 @@ const MyAnnouncementsItem = ({ announcement, onDelete, onCopyLink, onViewChats, 
                         announcement={announcement}
                         onEdit={onEdit}
                         onViewChats={onViewChats}
-                        onCopyLink={onCopyLink}
+                        onViewAnnouncement={onViewAnnouncement}
                         onDeleteClick={handleDeleteClick}
                     />
                 </div>
@@ -57,7 +57,7 @@ const MyAnnouncementsItem = ({ announcement, onDelete, onCopyLink, onViewChats, 
                         announcement={announcement}
                         onEdit={onEdit}
                         onViewChats={onViewChats}
-                        onCopyLink={onCopyLink}
+                        onViewAnnouncement={onViewAnnouncement}
                         onDeleteClick={handleDeleteClick}
                     />
                 </div>

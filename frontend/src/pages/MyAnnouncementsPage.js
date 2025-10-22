@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
 import AuthRequired from '../components/common/AuthRequired';
@@ -12,11 +13,13 @@ import announcementService from '../services/announcementService';
 
 const MyAnnouncementsPage = () => {
     const { t } = useTranslation();
+    const navigate = useNavigate();
     const { isAuthenticated, isLoading: authLoading } = useAuth();
     const { addToast } = useToast();
     const [allAnnouncements, setAllAnnouncements] = useState([]);
     const [filteredAnnouncements, setFilteredAnnouncements] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [hasActiveFilters, setHasActiveFilters] = useState(false);
 
     const fetchMyAnnouncements = useCallback(async () => {
         try {
@@ -65,6 +68,9 @@ const MyAnnouncementsPage = () => {
         });
         
         setFilteredAnnouncements(filtered);
+        
+        const hasFilters = filters.title || filters.tags.length > 0 || filters.categories.length > 0;
+        setHasActiveFilters(hasFilters);
     }, [allAnnouncements]);
 
     const handleDeleteAnnouncement = useCallback(async (id) => {
@@ -84,14 +90,9 @@ const MyAnnouncementsPage = () => {
         }
     }, [addToast, t]);
 
-    const handleCopyLink = useCallback((id) => {
-        const link = `${window.location.origin}/view-announcement/${id}`;
-        navigator.clipboard.writeText(link).then(() => {
-            addToast(t('myAnnouncements.success.linkCopied'), 'success', 3000);
-        }).catch(() => {
-            addToast(t('myAnnouncements.errors.linkCopyFailed'), 'error', 3000);
-        });
-    }, [addToast, t]);
+    const handleViewAnnouncement = useCallback((id) => {
+        navigate(`/view-announcement/${id}`);
+    }, [navigate]);
 
     const handleViewChats = useCallback((id) => {
         addToast('Funkcja czatów będzie wkrótce dostępna', 'info', 3000);
@@ -136,8 +137,9 @@ const MyAnnouncementsPage = () => {
                             <MyAnnouncementsList 
                                 announcements={filteredAnnouncements}
                                 loading={loading}
+                                hasActiveFilters={hasActiveFilters}
                                 onDelete={handleDeleteAnnouncement}
-                                onCopyLink={handleCopyLink}
+                                onViewAnnouncement={handleViewAnnouncement}
                                 onViewChats={handleViewChats}
                                 onEdit={handleEditAnnouncement}
                             />
@@ -156,8 +158,9 @@ const MyAnnouncementsPage = () => {
                                 <MyAnnouncementsList 
                                     announcements={filteredAnnouncements}
                                     loading={loading}
+                                    hasActiveFilters={hasActiveFilters}
                                     onDelete={handleDeleteAnnouncement}
-                                    onCopyLink={handleCopyLink}
+                                    onViewAnnouncement={handleViewAnnouncement}
                                     onViewChats={handleViewChats}
                                     onEdit={handleEditAnnouncement}
                                 />

@@ -40,7 +40,10 @@ class AnnouncementRepository {
 
     public function findById($id) {
         try {
-            $query = "SELECT * FROM announcements WHERE id = :id";
+            $query = "SELECT a.*, u.nickname as user_name 
+                      FROM announcements a 
+                      LEFT JOIN users u ON a.user_id = u.id 
+                      WHERE a.id = :id";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();

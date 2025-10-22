@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NavigationLinks = ({ variant = "desktop", onLinkClick }) => {
   const { t } = useTranslation();
   const links = [
-    { href: "/#/find-projects", key: "header.findProjects", isExternal: true },
+    { href: "/", key: "header.homePage", isExternal: false },
     { href: "/#/post-announcement", key: "header.postAnnouncement", isExternal: true },
     { href: "/#/about", key: "header.about", isExternal: true },
   ];

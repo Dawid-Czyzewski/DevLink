@@ -1,6 +1,6 @@
 {
     "header": {
-        "findProjects": "Znajdź ogłoszenie",
+        "homePage": "Strona główna",
         "postAnnouncement": "Dodaj ogłoszenie",
         "about": "O nas",
         "login": "Zaloguj się",
@@ -328,13 +328,15 @@
         },
         "empty": {
             "title": "Nie znaleziono ogłoszeń",
-            "message": "Nie utworzyłeś jeszcze żadnych ogłoszeń. Kliknij 'Dodaj Nowe Ogłoszenie', aby zacząć."
+            "message": "Nie utworzyłeś jeszcze żadnych ogłoszeń. Kliknij 'Dodaj Nowe Ogłoszenie', aby zacząć.",
+            "filterMessage": "Nie znaleziono ogłoszeń z wybranymi filtrami. Spróbuj dostosować kryteria wyszukiwania lub wyczyść filtry, aby zobaczyć wszystkie swoje ogłoszenia."
         },
         "actions": {
             "edit": "Edytuj",
             "delete": "Usuń",
             "chats": "Zobacz Czaty",
-            "copyLink": "Skopiuj Link"
+            "copyLink": "Skopiuj Link",
+            "viewAnnouncement": "Zobacz ogłoszenie"
         },
         "confirmDelete": "Usuń Ogłoszenie",
         "confirmDeleteMessage": "Czy na pewno chcesz usunąć to ogłoszenie? Ta akcja nie może zostać cofnięta.",
@@ -346,6 +348,81 @@
             "loadFailed": "Nie udało się załadować ogłoszeń",
             "deleteFailed": "Nie udało się usunąć ogłoszenia",
             "linkCopyFailed": "Nie udało się skopiować linku"
+        }
+    },
+    "viewAnnouncement": {
+        "loading": "Ładowanie ogłoszenia...",
+        "content": {
+            "description": "Opis",
+            "technologies": "Technologie",
+            "author": "Autor",
+            "categories": "Kategorie",
+            "unknown": "Nieznany"
+        },
+        "actions": {
+            "edit": "Edytuj",
+            "delete": "Usuń",
+            "contact": "Kontakt",
+            "sendMessage": "Wyślij wiadomość",
+            "loginToContact": "Zaloguj się, aby skontaktować",
+            "viewProfile": "Zobacz profil",
+            "share": "Udostępnij",
+            "shareAnnouncement": "Udostępnij ogłoszenie",
+            "copyLink": "Skopiuj link",
+            "info": "Informacje",
+            "published": "Opublikowano",
+            "updated": "Zaktualizowano",
+            "categories": "Kategorie",
+            "technologies": "Technologie",
+            "author": "Autor",
+            "chat": "Czat",
+            "startChat": "Rozpocznij czat",
+            "loginToChat": "Zaloguj się, aby wysłać wiadomość do autora"
+        },
+        "success": {
+            "linkCopied": "Link został skopiowany do schowka"
+        },
+        "errors": {
+            "title": "Błąd",
+            "loadFailed": "Nie udało się załadować ogłoszenia",
+            "notFound": "Ogłoszenie nie zostało znalezione",
+            "loginRequired": "Musisz być zalogowany, aby skontaktować się z autorem",
+            "notImplemented": "Ta funkcja nie jest jeszcze zaimplementowana"
+        }
+    },
+    "homePage": {
+        "title": "Znajdź Projekty",
+        "subtitle": "Odkryj niesamowite projekty i znajdź swoją następną współpracę",
+        "loading": "Ładowanie ogłoszeń...",
+        "search": {
+            "label": "Szukaj po słowach kluczowych",
+            "placeholder": "Szukaj po technologiach, tagach lub opisie...",
+            "clear": "Wyczyść wyszukiwanie"
+        },
+        "sort": {
+            "label": "Sortuj według daty",
+            "newest": "Najnowsze najpierw",
+            "oldest": "Najstarsze najpierw"
+        },
+        "results": "Wyświetlanie {{count}} z {{total}} ogłoszeń",
+        "empty": {
+            "title": "Nie znaleziono ogłoszeń",
+            "message": "Nie opublikowano jeszcze żadnych ogłoszeń. Bądź pierwszy, który podzieli się swoim projektem!",
+            "searchMessage": "Spróbuj dostosować kryteria wyszukiwania lub wyczyść wyszukiwanie, aby zobaczyć wszystkie ogłoszenia.",
+            "filterMessage": "Nie znaleziono ogłoszeń z wybranymi filtrami. Spróbuj dostosować kryteria wyszukiwania lub wyczyść filtry, aby zobaczyć wszystkie ogłoszenia."
+        },
+        "announcement": {
+            "viewButton": "Zobacz ogłoszenie"
+        },
+        "categories": {
+            "frontend": "Frontend",
+            "backend": "Backend",
+            "fullstack": "Fullstack",
+            "uxui": "UX/UI",
+            "pm": "Product Manager"
+        },
+        "categoriesFilter": {
+            "label": "Filtruj po kategoriach"
         }
     }
 }

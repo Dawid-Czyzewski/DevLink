@@ -3,7 +3,7 @@ import MyAnnouncementsLoadingState from './MyAnnouncementsLoadingState';
 import MyAnnouncementsEmptyState from './MyAnnouncementsEmptyState';
 import MyAnnouncementsItem from './MyAnnouncementsItem';
 
-const MyAnnouncementsList = ({ announcements, loading, onDelete, onCopyLink, onViewChats, onEdit }) => {
+const MyAnnouncementsList = ({ announcements, loading, hasActiveFilters = false, onDelete, onViewAnnouncement, onViewChats, onEdit }) => {
     const { t } = useTranslation();
 
     if (loading) {
@@ -11,7 +11,7 @@ const MyAnnouncementsList = ({ announcements, loading, onDelete, onCopyLink, onV
     }
 
     if (announcements.length === 0) {
-        return <MyAnnouncementsEmptyState />;
+        return <MyAnnouncementsEmptyState hasFilters={hasActiveFilters} />;
     }
 
     return (
@@ -40,7 +40,7 @@ const MyAnnouncementsList = ({ announcements, loading, onDelete, onCopyLink, onV
                         key={announcement.id}
                         announcement={announcement}
                         onDelete={onDelete}
-                        onCopyLink={onCopyLink}
+                        onViewAnnouncement={onViewAnnouncement}
                         onViewChats={onViewChats}
                         onEdit={onEdit}
                     />

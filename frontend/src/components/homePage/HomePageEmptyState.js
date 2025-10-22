@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-const MyAnnouncementsEmptyState = ({ hasFilters = false }) => {
+const HomePageEmptyState = ({ hasFilters = false }) => {
     const { t } = useTranslation();
 
     return (
@@ -11,16 +11,16 @@ const MyAnnouncementsEmptyState = ({ hasFilters = false }) => {
                 </svg>
             </div>
             <h3 className="text-2xl font-bold text-white mb-4">
-                {t('myAnnouncements.empty.title')}
+                {t('homePage.empty.title')}
             </h3>
             <p className="text-gray-400 text-lg max-w-md mx-auto leading-relaxed">
-                {hasFilters 
-                    ? t('myAnnouncements.empty.filterMessage')
-                    : t('myAnnouncements.empty.message')
+                {hasFilters
+                    ? t('homePage.empty.filterMessage')
+                    : t('homePage.empty.message')
                 }
             </p>
         </div>
     );
 };
 
-export default MyAnnouncementsEmptyState;
+export default HomePageEmptyState;
