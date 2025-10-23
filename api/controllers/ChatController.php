@@ -3,6 +3,7 @@
 require_once __DIR__ . '/BaseController.php';
 require_once __DIR__ . '/../repositories/ChatRepository.php';
 require_once __DIR__ . '/../repositories/MessageRepository.php';
+require_once __DIR__ . '/../repositories/AnnouncementRepository.php';
 require_once __DIR__ . '/../dto/ChatDTO.php';
 require_once __DIR__ . '/../dto/MessageDTO.php';
 require_once __DIR__ . '/../utils/Response.php';
@@ -33,10 +34,10 @@ class ChatController extends BaseController {
                 $chatsWithLastMessage[] = $chatArray;
             }
 
-            return Response::success('User chats retrieved successfully', [
+            return Response::success([
                 'chats' => $chatsWithLastMessage,
                 'count' => count($chatsWithLastMessage)
-            ]);
+            ], 'User chats retrieved successfully');
 
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);
@@ -54,7 +55,7 @@ class ChatController extends BaseController {
                 return Response::error('Announcement ID parameter is required', 400);
             }
             
-            $chat = $this->chatRepository->findByAnnouncementId($announcementId);
+            $chat = $this->chatRepository->findByAnnouncementId((int) $announcementId);
 
             if (!$chat) {
                 return Response::error('Chat not found', 404);
@@ -64,9 +65,9 @@ class ChatController extends BaseController {
                 return Response::error('Unauthorized', 403);
             }
 
-            return Response::success('Chat retrieved successfully', [
+            return Response::success([
                 'chat' => $chat->toArray()
-            ]);
+            ], 'Chat retrieved successfully');
 
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);
@@ -78,34 +79,49 @@ class ChatController extends BaseController {
             $this->requireAuth();
             
             $request = new Request();
-            $announcementId = $request->get('announcementId');
+            $announcementId = $request->getBody('announcementId');
             
             if (!$announcementId) {
                 return Response::error('Announcement ID parameter is required', 400);
             }
             
             $userId = $this->getCurrentUserId();
-            $chat = $this->chatRepository->findByAnnouncementId($announcementId);
-
+            
+            $announcementRepository = new AnnouncementRepository();
+            $announcement = $announcementRepository->findById((int) $announcementId);
+            
+            if (!$announcement) {
+                return Response::error('Announcement not found', 404);
+            }
+            
+            if ($announcement->getUserId() == $userId) {
+                return Response::error('Cannot join chat for your own announcement', 400);
+            }
+            
+            $existingChat = $this->chatRepository->findByUserIdAndAnnouncementId($userId, (int) $announcementId);
+            
+            if ($existingChat) {
+                return Response::success([
+                    'chat' => $existingChat->toArray()
+                ], 'User already has a chat for this announcement');
+            }
+            
+            $announcementAuthorId = $announcement->getUserId();
+            
+            $chatData = [
+                'announcement_id' => (int) $announcementId,
+                'participants' => [(int) $userId, (int) $announcementAuthorId]
+            ];
+            
+            $chat = $this->chatRepository->create($chatData);
+            
             if (!$chat) {
-                return Response::error('Chat not found', 404);
+                return Response::error('Failed to create chat', 500);
             }
-
-            if ($chat->isParticipant($userId)) {
-                return Response::success('User already in chat', [
-                    'chat' => $chat->toArray()
-                ]);
-            }
-
-            $updatedChat = $this->chatRepository->addParticipant($chat->getId(), $userId);
-
-            if (!$updatedChat) {
-                return Response::error('Failed to join chat', 500);
-            }
-
-            return Response::success('Successfully joined chat', [
-                'chat' => $updatedChat->toArray()
-            ]);
+            
+            return Response::success([
+                'chat' => $chat->toArray()
+            ], 'Chat created and joined successfully');
 
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);
@@ -140,9 +156,9 @@ class ChatController extends BaseController {
                 return Response::error('Failed to leave chat', 500);
             }
 
-            return Response::success('Successfully left chat', [
+            return Response::success([
                 'chat' => $updatedChat->toArray()
-            ]);
+            ], 'Successfully left chat');
 
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);
@@ -170,19 +186,19 @@ class ChatController extends BaseController {
                 return Response::error('Unauthorized', 403);
             }
 
-            $limit = $request->getQuery('limit', 50);
-            $offset = $request->getQuery('offset', 0);
+            $limit = $request->get('limit', 50);
+            $offset = $request->get('offset', 0);
 
             $messages = $this->messageRepository->findByChatId($chatId, $limit, $offset);
             $messagesArray = array_map(function($message) {
                 return $message->toArray();
             }, $messages);
 
-            return Response::success('Messages retrieved successfully', [
+            return Response::success([
                 'messages' => $messagesArray,
                 'chat_id' => $chatId,
                 'count' => count($messagesArray)
-            ]);
+            ], 'Messages retrieved successfully');
 
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);
@@ -195,12 +211,14 @@ class ChatController extends BaseController {
             
             $request = new Request();
             $data = $request->getBody();
-            $chatId = $request->get('chatId');
+            $chatId = $request->getBody('chatId');
             
             if (!$chatId) {
                 return Response::error('Chat ID parameter is required', 400);
             }
 
+            $data['sender_id'] = $this->getCurrentUserId();
+            
             $dto = new MessageDTO($data);
             $errors = $dto->validate();
 
@@ -220,7 +238,6 @@ class ChatController extends BaseController {
 
             $messageData = $dto->toArray();
             $messageData['chat_id'] = $chatId;
-            $messageData['sender_id'] = $this->getCurrentUserId();
 
             $message = $this->messageRepository->create($messageData);
 
@@ -228,9 +245,9 @@ class ChatController extends BaseController {
                 return Response::error('Failed to send message', 500);
             }
 
-            return Response::success('Message sent successfully', [
+            return Response::success([
                 'message' => $message->toArray()
-            ], 201);
+            ], 'Message sent successfully', 201);
 
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);

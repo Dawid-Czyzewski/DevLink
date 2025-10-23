@@ -18,8 +18,6 @@ const PostAnnouncementPage = () => {
         setIsSubmitting(true);
         
         try {
-            console.log('Submitting announcement:', formData);
-            
             const response = await announcementService.createAnnouncement(formData);
             
             if (response.success) {
@@ -31,7 +29,6 @@ const PostAnnouncementPage = () => {
             }
             
         } catch (error) {
-            console.error('Error creating announcement:', error);
             
             if (error.response && error.response.data && error.response.data.message) {
                 addToast(error.response.data.message, 'error', 5000);

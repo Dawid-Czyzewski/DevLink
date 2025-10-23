@@ -95,8 +95,8 @@ const MyAnnouncementsPage = () => {
     }, [navigate]);
 
     const handleViewChats = useCallback((id) => {
-        addToast('Funkcja czatów będzie wkrótce dostępna', 'info', 3000);
-    }, [addToast]);
+        navigate(`/chats?announcementId=${id}`);
+    }, [navigate]);
 
     const handleEditAnnouncement = useCallback((id) => {
         window.location.hash = `#/edit-announcement/${id}`;

@@ -9,6 +9,14 @@
         "profile": "Profile",
         "welcome": "Welcome"
     },
+    "common": {
+        "back": "Back",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit",
+        "delete": "Delete",
+        "confirm": "Confirm"
+    },
     "footer": {
         "description": "Platform connecting IT developers for collaborative projects. Find partners to bring your ideas to life.",
         "quickLinks": "Quick Links",
@@ -49,6 +57,8 @@
         "userFound": "User found",
         "notAuthenticated": "Not authenticated",
         "sessionExpired": "Your session has expired. Please log in again.",
+        "accessDenied": "Access Denied",
+        "loginRequired": "You need to be logged in to access chats.",
         "errors": {
             "unexpectedError": "An unexpected error occurred"
         }
@@ -78,7 +88,12 @@
         "lastChat": {
             "title": "Last Chat",
             "noMessages": "No messages",
-            "startConversation": "Start a conversation in one of your announcements"
+            "startConversation": "Start a conversation in one of your announcements",
+            "loading": "Loading...",
+            "goToChat": "Go to Chat",
+            "with": "with",
+            "noMessagesInChat": "No messages in this chat",
+            "viewAnnouncement": "View Announcement"
         }
     },
         "editProfile": {
@@ -302,10 +317,6 @@
             "notFound": "Announcement not found"
         }
     },
-    "common": {
-        "back": "Back",
-        "cancel": "Cancel"
-    },
     "myAnnouncements": {
         "title": "My Announcements",
         "subtitle": "Manage your project announcements and find collaborators",
@@ -335,6 +346,8 @@
             "edit": "Edit",
             "delete": "Delete",
             "chats": "View Chats",
+            "chatsDisabled": "No Chats",
+            "chatsTooltip": "This announcement doesn't have any chats yet",
             "copyLink": "Copy Link",
             "viewAnnouncement": "View Announcement"
         },
@@ -377,7 +390,8 @@
             "author": "Author",
             "chat": "Chat",
             "startChat": "Start Chat",
-            "loginToChat": "Login to send message to author"
+            "loginToChat": "Login to send message to author",
+            "viewAnnouncementChats": "View Announcement Chats"
         },
         "success": {
             "linkCopied": "Link copied to clipboard"
@@ -424,5 +438,46 @@
         "categoriesFilter": {
             "label": "Filter by categories"
         }
+    },
+    "chat": {
+        "title": "Chats",
+        "subtitle": "Your conversations with other developers",
+        "loading": "Loading chats...",
+        "noChats": "No chats found",
+        "noChatsMessage": "You don't have any active conversations yet. Start a conversation by contacting someone about their announcement.",
+        "messages": {
+            "loading": "Loading messages...",
+            "noMessages": "No messages yet",
+            "noMessagesMessage": "Start the conversation by sending the first message!",
+            "sendPlaceholder": "Type your message...",
+            "sendButton": "Send",
+            "sending": "Sending..."
+        },
+        "list": {
+            "title": "Your Chats",
+            "lastMessage": "Last message",
+            "noLastMessage": "No messages yet",
+            "selectChat": "Select a chat..."
+        },
+        "viewAnnouncement": "View Announcement",
+        "viewProfile": "View Profile",
+        "search": {
+            "placeholder": "Search chats by announcement title...",
+            "noResults": "No chats found",
+            "noResultsMessage": "No chats match your search criteria. Try adjusting your search terms."
+        },
+        "errors": {
+            "loadFailed": "Failed to load chats",
+            "messageSendFailed": "Failed to send message",
+            "joinFailed": "Failed to join chat",
+            "leaveFailed": "Failed to leave chat"
+        }
+    },
+    "user": {
+        "unknown": "Unknown User"
+    },
+    "messages": {
+        "sendFailed": "Failed to send message",
+        "unknownSender": "Unknown"
     }
 }

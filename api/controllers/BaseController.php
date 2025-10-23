@@ -5,7 +5,6 @@ require_once UTILS_PATH . 'Response.php';
 require_once UTILS_PATH . 'Request.php';
 
 abstract class BaseController {
-    
     protected $db;
     
     public function __construct() {
@@ -25,6 +24,6 @@ abstract class BaseController {
     }
     
     protected function getCurrentUserId() {
-        return $_SESSION['user_id'] ?? null;
+        return isset($_SESSION['user_id']) ? (int) $_SESSION['user_id'] : null;
     }
 }

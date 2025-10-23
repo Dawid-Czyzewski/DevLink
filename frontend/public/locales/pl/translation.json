@@ -9,6 +9,14 @@
         "profile": "Profil",
         "welcome": "Witaj"
     },
+    "common": {
+        "back": "Powrót",
+        "cancel": "Anuluj",
+        "save": "Zapisz",
+        "edit": "Edytuj",
+        "delete": "Usuń",
+        "confirm": "Potwierdź"
+    },
     "footer": {
         "description": "Platforma łącząca programistów IT do wspólnych projektów. Znajdź partnerów do realizacji swoich pomysłów.",
         "quickLinks": "Szybkie linki",
@@ -49,6 +57,8 @@
         "userFound": "Użytkownik znaleziony",
         "notAuthenticated": "Nie zalogowano",
         "sessionExpired": "Twoja sesja wygasła. Zaloguj się ponownie.",
+        "accessDenied": "Dostęp zabroniony",
+        "loginRequired": "Musisz być zalogowany, aby uzyskać dostęp do czatów.",
         "errors": {
             "unexpectedError": "Wystąpił nieoczekiwany błąd"
         }
@@ -78,7 +88,12 @@
         "lastChat": {
             "title": "Ostatni czat",
             "noMessages": "Brak wiadomości",
-            "startConversation": "Rozpocznij rozmowę w jednym z ogłoszeń"
+            "startConversation": "Rozpocznij rozmowę w jednym z ogłoszeń",
+            "loading": "Ładowanie...",
+            "goToChat": "Przejdź do czatu",
+            "with": "z",
+            "noMessagesInChat": "Brak wiadomości w tym czacie",
+            "viewAnnouncement": "Zobacz ogłoszenie"
         }
     },
         "editProfile": {
@@ -302,10 +317,6 @@
             "notFound": "Ogłoszenie nie zostało znalezione"
         }
     },
-    "common": {
-        "back": "Powrót",
-        "cancel": "Anuluj"
-    },
     "myAnnouncements": {
         "title": "Moje Ogłoszenia",
         "subtitle": "Zarządzaj swoimi ogłoszeniami projektowymi i znajdź współpracowników",
@@ -335,6 +346,8 @@
             "edit": "Edytuj",
             "delete": "Usuń",
             "chats": "Zobacz Czaty",
+            "chatsDisabled": "Brak Czatów",
+            "chatsTooltip": "To ogłoszenie nie ma jeszcze żadnych czatów",
             "copyLink": "Skopiuj Link",
             "viewAnnouncement": "Zobacz ogłoszenie"
         },
@@ -377,7 +390,8 @@
             "author": "Autor",
             "chat": "Czat",
             "startChat": "Rozpocznij czat",
-            "loginToChat": "Zaloguj się, aby wysłać wiadomość do autora"
+            "loginToChat": "Zaloguj się, aby wysłać wiadomość do autora",
+            "viewAnnouncementChats": "Zobacz czaty ogłoszenia"
         },
         "success": {
             "linkCopied": "Link został skopiowany do schowka"
@@ -424,5 +438,46 @@
         "categoriesFilter": {
             "label": "Filtruj po kategoriach"
         }
+    },
+    "chat": {
+        "title": "Czaty",
+        "subtitle": "Twoje rozmowy z innymi programistami",
+        "loading": "Ładowanie czatów...",
+        "noChats": "Nie znaleziono czatów",
+        "noChatsMessage": "Nie masz jeszcze żadnych aktywnych rozmów. Rozpocznij rozmowę, kontaktując się z kimś w sprawie jego ogłoszenia.",
+        "messages": {
+            "loading": "Ładowanie wiadomości...",
+            "noMessages": "Brak wiadomości",
+            "noMessagesMessage": "Rozpocznij rozmowę, wysyłając pierwszą wiadomość!",
+            "sendPlaceholder": "Napisz swoją wiadomość...",
+            "sendButton": "Wyślij",
+            "sending": "Wysyłanie..."
+        },
+        "list": {
+            "title": "Twoje Czaty",
+            "lastMessage": "Ostatnia wiadomość",
+            "noLastMessage": "Brak wiadomości",
+            "selectChat": "Wybierz czat..."
+        },
+        "viewAnnouncement": "Zobacz ogłoszenie",
+        "viewProfile": "Zobacz profil",
+        "search": {
+            "placeholder": "Szukaj czatów po tytule ogłoszenia...",
+            "noResults": "Nie znaleziono czatów",
+            "noResultsMessage": "Nie znaleziono czatów pasujących do kryteriów wyszukiwania. Spróbuj dostosować terminy wyszukiwania."
+        },
+        "errors": {
+            "loadFailed": "Nie udało się załadować czatów",
+            "messageSendFailed": "Nie udało się wysłać wiadomości",
+            "joinFailed": "Nie udało się dołączyć do czatu",
+            "leaveFailed": "Nie udało się opuścić czatu"
+        }
+    },
+    "user": {
+        "unknown": "Nieznany użytkownik"
+    },
+    "messages": {
+        "sendFailed": "Nie udało się wysłać wiadomości",
+        "unknownSender": "Nieznany"
     }
 }

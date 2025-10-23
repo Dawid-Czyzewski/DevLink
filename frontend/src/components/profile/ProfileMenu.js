@@ -74,8 +74,9 @@ const ProfileMenu = () => {
 			case 'myAnnouncements':
 				navigate('/my-announcements');
 				break;
-			case 'chats':
-				break;
+		case 'chats':
+			navigate('/chats');
+			break;
 			case 'editProfile':
 				navigate('/edit-profile');
 				break;

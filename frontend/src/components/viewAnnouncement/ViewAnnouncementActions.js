@@ -1,13 +1,17 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useToast } from '../../contexts/ToastContext';
+import chatService from '../../services/chatService';
 
 const ViewAnnouncementActions = ({ announcement }) => {
     const { t } = useTranslation();
     const navigate = useNavigate();
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, user } = useAuth();
     const { addToast } = useToast();
+    const [isStartingChat, setIsStartingChat] = useState(false);
+    const isAuthor = isAuthenticated && user && user.id === announcement.user_id;
 
     const handleViewProfile = () => {
         if (announcement.user_id) {
@@ -15,14 +19,53 @@ const ViewAnnouncementActions = ({ announcement }) => {
         }
     };
 
-    const handleStartChat = () => {
+    const handleViewAnnouncementChats = () => {
+        navigate(`/chats?announcementId=${announcement.id}`);
+    };
+
+    const handleStartChat = async () => {
         if (!isAuthenticated) {
             addToast(t('viewAnnouncement.errors.loginRequired'), 'error', 3000);
             navigate('/login');
             return;
         }
 
-        addToast(t('viewAnnouncement.errors.notImplemented'), 'error', 3000);
+        setIsStartingChat(true);
+        try {
+            let response;
+            
+            try {
+                response = await chatService.getChatByAnnouncementId(announcement.id);
+                
+                if (response.success) {
+                    const chatId = response.data.chat?.id;
+                    if (chatId) {
+                        navigate(`/chats?chatId=${chatId}`);
+                    } else {
+                        navigate('/chats');
+                    }
+                    return;
+                }
+            } catch (error) {}
+            
+            response = await chatService.joinChat(announcement.id);
+            
+            if (response.success) {
+                const chatId = response.data.chat?.id;
+                if (chatId) {
+                    navigate(`/chats?chatId=${chatId}`);
+                } else {
+                    navigate('/chats');
+                }
+            } else {
+                addToast(response.message || t('chat.errors.joinFailed'), 'error', 5000);
+            }
+        } catch (error) {
+            console.error('Error starting chat:', error);
+            addToast(t('chat.errors.joinFailed'), 'error', 5000);
+        } finally {
+            setIsStartingChat(false);
+        }
     };
 
     const handleCopyLink = async () => {
@@ -80,13 +123,26 @@ const ViewAnnouncementActions = ({ announcement }) => {
                 </h3>
                 
                 <button
-                    onClick={handleStartChat}
-                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 cursor-pointer flex items-center justify-center gap-3"
+                    onClick={isAuthor ? handleViewAnnouncementChats : handleStartChat}
+                    disabled={isStartingChat}
+                    className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 disabled:from-gray-600 disabled:to-gray-700 disabled:cursor-not-allowed text-white px-6 py-3 rounded-xl font-semibold text-lg shadow-xl hover:shadow-2xl disabled:shadow-none transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 disabled:transform-none disabled:scale-100 cursor-pointer flex items-center justify-center gap-3"
                 >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    {isAuthenticated ? t('viewAnnouncement.actions.startChat') : t('viewAnnouncement.actions.loginToChat')}
+                    {isStartingChat ? (
+                        <>
+                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white/20 border-t-white"></div>
+                            <span>Starting chat...</span>
+                        </>
+                    ) : (
+                        <>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            {isAuthor 
+                                ? t('viewAnnouncement.actions.viewAnnouncementChats')
+                                : (isAuthenticated ? t('viewAnnouncement.actions.startChat') : t('viewAnnouncement.actions.loginToChat'))
+                            }
+                        </>
+                    )}
                 </button>
             </div>
 

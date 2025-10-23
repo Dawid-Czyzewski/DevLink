@@ -51,7 +51,12 @@ class MessageRepository {
 
     public function findByChatId($chatId, $limit = 50, $offset = 0) {
         try {
-            $query = "SELECT * FROM messages WHERE chat_id = :chat_id ORDER BY created_at DESC LIMIT :limit OFFSET :offset";
+            $query = "SELECT m.*, u.nickname as sender_name, u.nickname as sender_nickname 
+                      FROM messages m 
+                      LEFT JOIN users u ON m.sender_id = u.id 
+                      WHERE m.chat_id = :chat_id 
+                      ORDER BY m.created_at DESC 
+                      LIMIT :limit OFFSET :offset";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':chat_id', $chatId, PDO::PARAM_INT);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
@@ -143,6 +148,27 @@ class MessageRepository {
             return 0;
         } catch (Exception $e) {
             throw new DatabaseException("Failed to get message count: " . $e->getMessage());
+        }
+    }
+
+    public function getLastMessageByChatId($chatId) {
+        try {
+            $query = "SELECT m.*, u.nickname as sender_name, u.nickname as sender_nickname 
+                      FROM messages m 
+                      LEFT JOIN users u ON m.sender_id = u.id 
+                      WHERE m.chat_id = :chat_id 
+                      ORDER BY m.created_at DESC 
+                      LIMIT 1";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':chat_id', $chatId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return new Message($row);
+            }
+            return null;
+        } catch (Exception $e) {
+            throw new DatabaseException("Failed to get last message: " . $e->getMessage());
         }
     }
 }

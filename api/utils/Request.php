@@ -55,4 +55,12 @@ class Request {
         $headers = self::getHeaders();
         return isset($headers[$name]) ? $headers[$name] : null;
     }
+    
+    public static function getBody($key = null, $default = null) {
+        $data = self::getJsonInput();
+        if ($key === null) {
+            return $data;
+        }
+        return isset($data[$key]) ? $data[$key] : $default;
+    }
 }

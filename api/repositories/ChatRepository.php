@@ -19,7 +19,8 @@ class ChatRepository {
 
             $stmt = $this->db->prepare($query);
 
-            $participants = json_encode($data['participants']);
+            $participants = array_map('intval', $data['participants']);
+            $participants = json_encode($participants);
 
             $stmt->bindParam(':announcement_id', $data['announcement_id'], PDO::PARAM_INT);
             $stmt->bindParam(':participants', $participants, PDO::PARAM_STR);
@@ -68,12 +69,42 @@ class ChatRepository {
         }
     }
 
+    public function findByUserIdAndAnnouncementId($userId, $announcementId) {
+        try {
+            $query = "SELECT * FROM chats 
+                      WHERE announcement_id = :announcement_id 
+                      AND JSON_CONTAINS(participants, :userIdJson, '$')";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':announcement_id', $announcementId, PDO::PARAM_INT);
+            $userIdJson = json_encode((int)$userId);
+            $stmt->bindParam(':userIdJson', $userIdJson, PDO::PARAM_STR);
+            $stmt->execute();
+
+            if ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $row['participants'] = json_decode($row['participants'], true);
+                return new Chat($row);
+            }
+            return null;
+        } catch (Exception $e) {
+            throw new DatabaseException("Failed to find chat by user and announcement: " . $e->getMessage());
+        }
+    }
+
     public function findByUserId($userId) {
         try {
-            // Use JSON_CONTAINS to check if userId is in the participants array
-            $query = "SELECT * FROM chats WHERE JSON_CONTAINS(participants, :userIdJson, '$') ORDER BY updated_at DESC";
+            $query = "SELECT c.*, a.title as announcement_title, a.user_id as announcement_author_id,
+                             u.nickname as chat_initiator_nickname,
+                             au.nickname as announcement_owner_nickname
+                      FROM chats c 
+                      LEFT JOIN announcements a ON c.announcement_id = a.id 
+                      LEFT JOIN users u ON (
+                          SELECT JSON_EXTRACT(c.participants, '$[0]') 
+                      ) = u.id AND u.id != a.user_id
+                      LEFT JOIN users au ON a.user_id = au.id
+                      WHERE JSON_CONTAINS(c.participants, :userIdJson, '$') 
+                      ORDER BY c.updated_at DESC";
             $stmt = $this->db->prepare($query);
-            $userIdJson = json_encode((int)$userId); // Ensure userId is treated as an integer in JSON
+            $userIdJson = json_encode((int)$userId);
             $stmt->bindParam(':userIdJson', $userIdJson, PDO::PARAM_STR);
             $stmt->execute();
             
@@ -93,6 +124,7 @@ class ChatRepository {
             $query = "UPDATE chats SET participants = :participants, updated_at = NOW() WHERE id = :id";
             $stmt = $this->db->prepare($query);
             
+            $participants = array_map('intval', $participants);
             $participantsJson = json_encode($participants);
             
             $stmt->bindParam(':participants', $participantsJson, PDO::PARAM_STR);
@@ -115,6 +147,7 @@ class ChatRepository {
             }
 
             $participants = $chat->getParticipants();
+            $userId = (int) $userId;
             if (!in_array($userId, $participants)) {
                 $participants[] = $userId;
                 return $this->updateParticipants($id, $participants);
@@ -133,8 +166,9 @@ class ChatRepository {
             }
 
             $participants = $chat->getParticipants();
+            $userId = (int) $userId;
             $participants = array_filter($participants, function($id) use ($userId) {
-                return $id != $userId;
+                return (int) $id != $userId;
             });
 
             return $this->updateParticipants($id, array_values($participants));

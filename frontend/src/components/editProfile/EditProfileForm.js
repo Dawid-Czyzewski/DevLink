@@ -5,6 +5,7 @@ import {
     ExperienceSection, 
     ContactSection 
 } from '../profile';
+import EditProfileSubmitButton from './EditProfileSubmitButton';
 
 const EditProfileForm = ({ 
     formData, 
@@ -50,6 +51,8 @@ const EditProfileForm = ({
                 onChange={handleInputChange}
                 errors={errors}
             />
+
+            <EditProfileSubmitButton isLoading={isLoading} />
         </form>
     );
 };

@@ -13,6 +13,7 @@ import ViewProfilePage from './pages/ViewProfilePage';
 import MyAnnouncementsPage from './pages/MyAnnouncementsPage';
 import EditAnnouncementPage from './pages/EditAnnouncementPage';
 import ViewAnnouncementPage from './pages/ViewAnnouncementPage';
+import ChatPage from './pages/ChatPage';
 import HomePage from './pages/HomePage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
@@ -80,6 +81,11 @@ function AppContent() {
 						</ProtectedRoute>
 					} />
 					<Route path="/view-announcement/:id" element={<ViewAnnouncementPage />} />
+					<Route path="/chats" element={
+						<ProtectedRoute requireAuth={true}>
+							<ChatPage />
+						</ProtectedRoute>
+					} />
 				</Routes>
 			</main>
 			<Footer />

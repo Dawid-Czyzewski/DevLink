@@ -40,6 +40,7 @@ class ApiService {
 
 				if (data.message === 'Authentication required' && this.onAuthError) {
 					this.onAuthError();
+					return;
 				}
 				
 				throw new ApiError(data.message || 'Request failed', response.status, data.errors);
@@ -67,7 +68,9 @@ class ApiService {
 			...params,
 		});
 
-		return this.request(`?${queryParams}`);
+		const url = `?${queryParams}`;
+
+		return this.request(url);
 	}
 
 	async post(controller, action, data = {}) {
@@ -76,7 +79,9 @@ class ApiService {
 			action,
 		});
 
-		return this.request(`?${queryParams}`, {
+		const url = `?${queryParams}`;
+
+		return this.request(url, {
 			method: 'POST',
 			body: JSON.stringify(data),
 		});

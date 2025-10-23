@@ -61,7 +61,12 @@ class AnnouncementRepository {
 
     public function findByUserId($userId) {
         try {
-            $query = "SELECT * FROM announcements WHERE user_id = :user_id ORDER BY created_at DESC";
+            $query = "SELECT a.*, COUNT(c.id) as chat_count 
+                      FROM announcements a 
+                      LEFT JOIN chats c ON a.id = c.announcement_id 
+                      WHERE a.user_id = :user_id 
+                      GROUP BY a.id 
+                      ORDER BY a.created_at DESC";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
             $stmt->execute();

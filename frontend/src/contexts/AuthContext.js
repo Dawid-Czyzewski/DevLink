@@ -80,23 +80,10 @@ export const AuthProvider = ({ children }) => {
                         setIsAuthenticated(false);
                     }
                 } catch (error) {
-                    const storedUserData = localStorage.getItem('userData');
-                    if (storedUserData) {
-                        try {
-                            const userData = JSON.parse(storedUserData);
-                            setUser(userData);
-                            setIsAuthenticated(true);
-                        } catch (parseError) {
-                            localStorage.removeItem('isLoggedIn');
-                            localStorage.removeItem('userData');
-                            setUser(null);
-                            setIsAuthenticated(false);
-                        }
-                    } else {
-                        localStorage.removeItem('isLoggedIn');
-                        setUser(null);
-                        setIsAuthenticated(false);
-                    }
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('userData');
+                    setUser(null);
+                    setIsAuthenticated(false);
                 }
             } else {
                 setUser(null);

@@ -16,13 +16,19 @@ export const AnnouncementActionsMobile = ({ announcement, onEdit, onViewChats, o
             </button>
 
             <button
-                onClick={() => onViewChats(announcement.id)}
-                className="flex items-center justify-center px-3 py-2 bg-green-600/80 hover:bg-green-600 text-white text-xs rounded-lg transition-all duration-200 cursor-pointer"
+                onClick={() => announcement.chat_count > 0 && onViewChats(announcement.id)}
+                disabled={announcement.chat_count === 0}
+                title={announcement.chat_count === 0 ? t('myAnnouncements.actions.chatsTooltip') : ''}
+                className={`flex items-center justify-center px-3 py-2 text-white text-xs rounded-lg transition-all duration-200 ${
+                    announcement.chat_count > 0 
+                        ? 'bg-green-600/80 hover:bg-green-600 cursor-pointer' 
+                        : 'bg-gray-600/50 cursor-not-allowed opacity-50'
+                }`}
             >
                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
-                {t('myAnnouncements.actions.chats')}
+                {announcement.chat_count > 0 ? t('myAnnouncements.actions.chats') : t('myAnnouncements.actions.chatsDisabled')}
             </button>
 
             <button
@@ -66,11 +72,18 @@ export const AnnouncementActionsDesktop = ({ announcement, onEdit, onViewChats, 
                 </button>
 
                 <button
-                    onClick={() => onViewChats(announcement.id)}
-                    className="group/btn flex-1 flex items-center justify-center px-3 py-2 bg-green-600/80 hover:bg-green-600 text-white text-xs rounded-lg transition-all duration-200 transform hover:scale-105 cursor-pointer"
-                    title={t('myAnnouncements.actions.chats')}
+                    onClick={() => announcement.chat_count > 0 && onViewChats(announcement.id)}
+                    disabled={announcement.chat_count === 0}
+                    title={announcement.chat_count === 0 ? t('myAnnouncements.actions.chatsTooltip') : t('myAnnouncements.actions.chats')}
+                    className={`group/btn flex-1 flex items-center justify-center px-3 py-2 text-white text-xs rounded-lg transition-all duration-200 ${
+                        announcement.chat_count > 0 
+                            ? 'bg-green-600/80 hover:bg-green-600 transform hover:scale-105 cursor-pointer' 
+                            : 'bg-gray-600/50 cursor-not-allowed opacity-50'
+                    }`}
                 >
-                    <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className={`w-4 h-4 transition-transform duration-200 ${
+                        announcement.chat_count > 0 ? 'group-hover/btn:rotate-12' : ''
+                    }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                     </svg>
                 </button>
