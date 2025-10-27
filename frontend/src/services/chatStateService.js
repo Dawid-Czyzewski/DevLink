@@ -57,7 +57,7 @@ class ChatStateService {
                     if (chatExists) {
                         this.setState({ selectedChatId: parseInt(chatIdFromUrl) });
                     }
-                } else if (sortedChats.length > 0 && !this.state.selectedChatId && !preserveSelection) {
+                } else if (sortedChats.length > 0 && !preserveSelection) {
                     this.setState({ selectedChatId: sortedChats[0].id });
                 }
             }
@@ -121,11 +121,14 @@ class ChatStateService {
             prevChats, 
             selectedChatId
         );
+
+        const newSelectedChatId = this.state.selectedChatId || (sortedChats.length > 0 ? sortedChats[0].id : null);
         
         this.setState({
             chats: sortedChats,
             filteredChats: sortedChats,
-            hasNewMessages: { ...this.state.hasNewMessages, ...newMessagesMap }
+            hasNewMessages: { ...this.state.hasNewMessages, ...newMessagesMap },
+            selectedChatId: newSelectedChatId
         });
     }
 

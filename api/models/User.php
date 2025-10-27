@@ -88,6 +88,7 @@ class User {
             'nickname' => $this->nickname,
             'email' => $this->email,
             'created_at' => $this->created_at,
+            'createdAt' => $this->created_at,
         ];
     }
 }

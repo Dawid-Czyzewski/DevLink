@@ -15,6 +15,10 @@ import EditAnnouncementPage from './pages/EditAnnouncementPage';
 import ViewAnnouncementPage from './pages/ViewAnnouncementPage';
 import ChatPage from './pages/ChatPage';
 import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import TermsPage from './pages/TermsPage';
+import PrivacyPage from './pages/PrivacyPage';
+import ContactPage from './pages/ContactPage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -42,6 +46,10 @@ function AppContent() {
 			<main className="flex-1">
 				<Routes>
 					<Route path="/" element={<HomePage />} />
+					<Route path="/about" element={<AboutPage />} />
+					<Route path="/contact" element={<ContactPage />} />
+					<Route path="/terms" element={<TermsPage />} />
+					<Route path="/privacy" element={<PrivacyPage />} />
 					<Route path="/login" element={
 						<ProtectedRoute requireAuth={false}>
 							<LoginPage />

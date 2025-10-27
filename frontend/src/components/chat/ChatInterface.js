@@ -23,7 +23,7 @@ const ChatInterface = ({
             </div>
 
             <div className="lg:col-span-3 flex flex-col space-y-4">
-                {selectedChatId ? (
+                {selectedChatId && chats.find(chat => chat.id === selectedChatId) ? (
                     <>
                         <ChatMessages
                             messages={messages}

@@ -6,7 +6,9 @@ const FooterLinks = ({ variant = "desktop" }) => {
   const links = [
     { href: "/", key: "header.homePage", isRouter: true },
     { href: "#post-announcement", key: "header.postAnnouncement", isRouter: false },
-    { href: "#about", key: "header.about", isRouter: false },
+    { href: "/about", key: "header.about", isRouter: true },
+    { href: "/terms", key: "footer.legal.terms", isRouter: true },
+    { href: "/privacy", key: "footer.legal.privacy", isRouter: true },
   ];
 
   const containerClass = variant === "mobile" 

@@ -18,9 +18,19 @@ class UserResponseDTO {
         $this->id = $data['id'] ?? null;
         $this->nickname = $data['nickname'] ?? null;
         $this->email = $data['email'] ?? null;
-        $this->createdAt = $data['created_at'] ?? null;
+        $this->createdAt = $data['created_at'] ?? $data['createdAt'] ?? null;
         $this->description = $data['description'] ?? null;
-        $this->tags = $data['tags'] ?? [];
+        
+        $tags = $data['tags'] ?? null;
+        if ($tags === null || $tags === '') {
+            $this->tags = [];
+        } elseif (is_string($tags)) {
+            $decodedTags = json_decode($tags, true);
+            $this->tags = is_array($decodedTags) ? $decodedTags : [];
+        } else {
+            $this->tags = is_array($tags) ? $tags : [];
+        }
+        
         $this->category = $data['category'] ?? null;
         $this->hasCommercialExperience = $data['hasCommercialExperience'] ?? false;
         $this->experienceLevel = $data['experienceLevel'] ?? null;

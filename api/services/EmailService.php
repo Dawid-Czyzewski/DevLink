@@ -164,4 +164,16 @@ class EmailService implements EmailServiceInterface {
 		require_once EMAIL_TEMPLATES_PATH . 'welcome.php';
 		return getWelcomeEmailTemplate($nickname, $activationToken);
 	}
+	
+	public function sendContactEmail(array $contactData): bool {
+		$subject = 'Nowa wiadomość kontaktowa z DevLink';
+		$body = $this->getContactEmailTemplate($contactData);
+
+		return $this->sendEmail('dawid.czyzewski.developer@gmail.com', $subject, $body);
+	}
+	
+	private function getContactEmailTemplate(array $contactData): string {
+		require_once EMAIL_TEMPLATES_PATH . 'contact.php';
+		return getContactEmailTemplate($contactData);
+	}
 }

@@ -19,13 +19,11 @@ const ChatList = ({ chats, selectedChatId, onChatSelect, loading, hasNewMessages
     };
 
     const getDisplayName = (chat) => {
-        if (!user) return 'Unknown User';
+        if (!user || !chat) return 'Unknown User';
         
         if (user.id === chat.announcement_author_id) {
             return chat.chat_initiator_nickname || 'Unknown User';
-        }
-
-        else {
+        } else {
             return chat.announcement_owner_nickname || 'Unknown User';
         }
     };

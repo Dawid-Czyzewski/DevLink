@@ -3,6 +3,7 @@
         "homePage": "Home Page",
         "postAnnouncement": "Add Announcement",
         "about": "About Us",
+        "contact": "Contact",
         "login": "Log In",
         "register": "Sign Up",
         "logout": "Logout",
@@ -26,10 +27,10 @@
         "about": "About Us",
         "contact": "Contact",
         "help": "Help",
-        "legal": "Legal",
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service",
-        "cookies": "Cookie Policy",
+        "legal": {
+            "privacy": "Privacy Policy",
+            "terms": "Terms of Service"
+        },
         "followUs": "Follow Us",
         "copyright": "© 2025 DevLink. All rights reserved.",
         "madeWith": "Made with ❤️ for the IT community"
@@ -479,5 +480,130 @@
     "messages": {
         "sendFailed": "Failed to send message",
         "unknownSender": "Unknown"
+    },
+    "about": {
+        "title": "About Us",
+        "subtitle": "Discover our mission and vision",
+        "mission": {
+            "title": "Our Mission",
+            "description": "DevLink is a platform connecting people involved in IT who want to learn and grow together. Our goal is to create a place where everyone can find partners for collaborative projects, exchange knowledge, and build their portfolio through practical experience."
+        },
+        "vision": {
+            "title": "Our Vision",
+            "description": "We want to be a place where people involved in IT can learn from each other, create collaborative projects, and build their portfolios. We believe that learning through practice and collaboration is the best way to develop professionally in the IT industry."
+        },
+        "features": {
+            "title": "Our Features",
+            "projectSharing": {
+                "title": "Collaborative Projects",
+                "description": "Find partners to realize your ideas and build your portfolio"
+            },
+            "communication": {
+                "title": "Communication",
+                "description": "Direct contact with other people in IT through our built-in chat system"
+            },
+            "learning": {
+                "title": "Learning & Development",
+                "description": "Learn from other people in IT and develop your skills practically"
+            }
+        }
+    },
+    "terms": {
+        "title": "Terms of Service",
+        "subtitle": "Rules for using the DevLink platform",
+        "section1": {
+            "title": "1. General provisions",
+            "content": "These terms of service define the rules for using the DevLink platform. Using the service means acceptance of all terms and conditions."
+        },
+        "section2": {
+            "title": "2. Definitions",
+            "content": "Service - the DevLink platform available at the internet address. User - a natural person using the service. Content - all materials posted by users."
+        },
+        "section3": {
+            "title": "3. Terms of use",
+            "content": "The service is intended for people involved in the IT industry. Users are obliged to follow professional ethics and mutual respect."
+        },
+        "section4": {
+            "title": "4. User rights and obligations",
+            "content": "Users have the right to create projects, communicate with other users and build their portfolio. The obligation is to respect copyrights and not publish illegal content."
+        },
+        "section5": {
+            "title": "5. Data protection",
+            "content": "The administrator protects users' personal data in accordance with applicable data protection regulations. Details of data processing are contained in the privacy policy."
+        },
+        "section6": {
+            "title": "6. Responsibility",
+            "content": "Users bear full responsibility for the content they publish. The administrator is not responsible for damages resulting from the use of the service."
+        },
+        "section7": {
+            "title": "7. Final provisions",
+            "content": "The terms may be changed by the administrator. Users will be informed about changes through the service. In matters not regulated, Polish law provisions apply."
+        },
+        "section8": {
+            "title": "8. Contact",
+            "content": "For matters related to the terms, you can contact the administrator through the contact form available in the service."
+        },
+        "lastUpdated": "Last updated: October 26, 2025"
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "subtitle": "How we protect your personal data",
+        "section1": {
+            "title": "1. Data controller",
+            "content": "DevLink is the controller of your personal data. Contact with the controller is possible through the contact form in the service."
+        },
+        "section2": {
+            "title": "2. Types of processed data",
+            "content": "We process only data provided by you during registration: email address and password. We do not collect additional personal data."
+        },
+        "section3": {
+            "title": "3. Purpose of processing",
+            "content": "We process data to provide service services, enable communication between users, personalize content and ensure service security."
+        },
+        "section4": {
+            "title": "4. Legal basis",
+            "content": "Data processing takes place on the basis of your consent (Art. 6(1)(a) GDPR) and for the purpose of performing the service agreement (Art. 6(1)(b) GDPR)."
+        },
+        "section5": {
+            "title": "5. Retention period",
+            "content": "We store data for the duration of the user account. Our service does not have an account deletion function, so data is stored until consent to data processing is withdrawn."
+        },
+        "section6": {
+            "title": "6. Your rights",
+            "content": "You have the right to access your data, correct it, delete it, limit processing, transfer data and file a complaint with the supervisory authority."
+        },
+        "section7": {
+            "title": "7. Security",
+            "content": "We use appropriate technical and organizational measures to protect your data against unauthorized access, loss, destruction or unauthorized disclosure."
+        },
+        "lastUpdated": "Last updated: October 26, 2025"
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "Get in touch with us",
+        "form": {
+            "name": "Name",
+            "namePlaceholder": "Enter your name",
+            "email": "Email",
+            "emailPlaceholder": "Enter your email",
+            "subject": "Subject",
+            "subjectPlaceholder": "Enter message subject",
+            "message": "Message",
+            "messagePlaceholder": "Enter your message",
+            "submit": "Send Message",
+            "submitting": "Sending...",
+            "successMessage": "Message sent successfully!",
+            "errorMessage": "An error occurred while sending the message. Please try again.",
+            "successToast": "Message sent successfully!",
+            "errorToast": "An error occurred while sending the message. Please try again."
+        },
+        "info": {
+            "title": "Contact Information",
+            "description": "We are here for you! If you have questions about the DevLink platform, need technical support, or want to share your feedback, please use the contact form."
+        },
+        "response": {
+            "title": "Response Time",
+            "description": "We respond to all messages within 24 hours. For urgent technical matters, we try to respond even faster."
+        }
     }
 }

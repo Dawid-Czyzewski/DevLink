@@ -3,6 +3,7 @@
         "homePage": "Strona główna",
         "postAnnouncement": "Dodaj ogłoszenie",
         "about": "O nas",
+        "contact": "Kontakt",
         "login": "Zaloguj się",
         "register": "Zarejestruj się",
         "logout": "Wyloguj",
@@ -26,10 +27,10 @@
         "about": "O nas",
         "contact": "Kontakt",
         "help": "Pomoc",
-        "legal": "Prawne",
-        "privacy": "Polityka prywatności",
-        "terms": "Regulamin",
-        "cookies": "Polityka cookies",
+        "legal": {
+            "privacy": "Polityka prywatności",
+            "terms": "Regulamin"
+        },
         "followUs": "Śledź nas",
         "copyright": "© 2025 DevLink. Wszystkie prawa zastrzeżone.",
         "madeWith": "Zrobione z ❤️ dla społeczności IT"
@@ -479,5 +480,130 @@
     "messages": {
         "sendFailed": "Nie udało się wysłać wiadomości",
         "unknownSender": "Nieznany"
+    },
+    "about": {
+        "title": "O nas",
+        "subtitle": "Poznaj naszą misję i wizję",
+        "mission": {
+            "title": "Nasza misja",
+            "description": "DevLink to platforma łącząca ludzi związanych z IT, którzy chcą się uczyć i rozwijać razem. Naszym celem jest stworzenie miejsca, gdzie każdy może znaleźć partnerów do wspólnych projektów, wymieniać się wiedzą i budować swoje portfolio poprzez praktyczne doświadczenia."
+        },
+        "vision": {
+            "title": "Nasza wizja",
+            "description": "Chcemy być miejscem, gdzie ludzie związani z IT mogą się uczyć od siebie nawzajem, tworzyć wspólne projekty i budować swoje portfolio. Wierzymy, że nauka przez praktykę i współpracę to najlepszy sposób na rozwój zawodowy w branży IT."
+        },
+        "features": {
+            "title": "Nasze funkcje",
+            "projectSharing": {
+                "title": "Wspólne projekty",
+                "description": "Znajdź partnerów do realizacji swoich pomysłów i buduj portfolio"
+            },
+            "communication": {
+                "title": "Komunikacja",
+                "description": "Bezpośredni kontakt z innymi osobami z branży IT przez wbudowany system czatów"
+            },
+            "learning": {
+                "title": "Nauka i rozwój",
+                "description": "Ucz się od innych osób z branży IT i rozwijaj swoje umiejętności praktycznie"
+            }
+        }
+    },
+    "terms": {
+        "title": "Regulamin serwisu",
+        "subtitle": "Zasady korzystania z platformy DevLink",
+        "section1": {
+            "title": "1. Postanowienia ogólne",
+            "content": "Niniejszy regulamin określa zasady korzystania z platformy DevLink. Korzystanie z serwisu oznacza akceptację wszystkich postanowień regulaminu."
+        },
+        "section2": {
+            "title": "2. Definicje",
+            "content": "Serwis - platforma DevLink dostępna pod adresem internetowym. Użytkownik - osoba fizyczna korzystająca z serwisu. Treści - wszelkie materiały zamieszczane przez użytkowników."
+        },
+        "section3": {
+            "title": "3. Warunki korzystania",
+            "content": "Serwis jest przeznaczony dla osób związanych z branżą IT. Użytkownicy zobowiązują się do przestrzegania zasad etyki zawodowej i wzajemnego szacunku."
+        },
+        "section4": {
+            "title": "4. Prawa i obowiązki użytkowników",
+            "content": "Użytkownicy mają prawo do tworzenia projektów, komunikacji z innymi użytkownikami i budowania swojego portfolio. Obowiązkiem jest przestrzeganie praw autorskich i niepublikowanie treści nielegalnych."
+        },
+        "section5": {
+            "title": "5. Ochrona danych",
+            "content": "Administrator chroni dane osobowe użytkowników zgodnie z obowiązującymi przepisami o ochronie danych osobowych. Szczegóły przetwarzania danych zawarte są w polityce prywatności."
+        },
+        "section6": {
+            "title": "6. Odpowiedzialność",
+            "content": "Użytkownicy ponoszą pełną odpowiedzialność za treści przez siebie publikowane. Administrator nie ponosi odpowiedzialności za szkody wynikające z korzystania z serwisu."
+        },
+        "section7": {
+            "title": "7. Postanowienia końcowe",
+            "content": "Regulamin może być zmieniany przez administratora. O zmianach użytkownicy będą informowani przez serwis. W sprawach nieuregulowanych stosuje się przepisy prawa polskiego."
+        },
+        "section8": {
+            "title": "8. Kontakt",
+            "content": "W sprawach związanych z regulaminem można kontaktować się z administratorem przez formularz kontaktowy dostępny w serwisie."
+        },
+        "lastUpdated": "Ostatnia aktualizacja: 26 października 2025"
+    },
+    "privacy": {
+        "title": "Polityka prywatności",
+        "subtitle": "Jak chronimy Twoje dane osobowe",
+        "section1": {
+            "title": "1. Administrator danych",
+            "content": "Administratorem Twoich danych osobowych jest DevLink. Kontakt z administratorem możliwy jest przez formularz kontaktowy w serwisie."
+        },
+        "section2": {
+            "title": "2. Rodzaje przetwarzanych danych",
+            "content": "Przetwarzamy tylko dane podane przez Cię podczas rejestracji: adres email oraz hasło. Nie zbieramy dodatkowych danych osobowych."
+        },
+        "section3": {
+            "title": "3. Cel przetwarzania",
+            "content": "Dane przetwarzamy w celu świadczenia usług serwisu, umożliwienia komunikacji między użytkownikami, personalizacji treści oraz zapewnienia bezpieczeństwa serwisu."
+        },
+        "section4": {
+            "title": "4. Podstawa prawna",
+            "content": "Przetwarzanie danych odbywa się na podstawie Twojej zgody (art. 6 ust. 1 lit. a RODO) oraz w celu wykonania umowy o świadczenie usług (art. 6 ust. 1 lit. b RODO)."
+        },
+        "section5": {
+            "title": "5. Okres przechowywania",
+            "content": "Dane przechowujemy przez czas trwania konta użytkownika. W naszym serwisie nie ma funkcji usuwania konta, dlatego dane są przechowywane do momentu wycofania zgody na przetwarzanie danych."
+        },
+        "section6": {
+            "title": "6. Twoje prawa",
+            "content": "Masz prawo do dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia danych oraz wniesienia skargi do organu nadzorczego."
+        },
+        "section7": {
+            "title": "7. Bezpieczeństwo",
+            "content": "Stosujemy odpowiednie środki techniczne i organizacyjne w celu ochrony Twoich danych przed nieuprawnionym dostępem, utratą, zniszczeniem lub nieuprawnionym ujawnieniem."
+        },
+        "lastUpdated": "Ostatnia aktualizacja: 26 października 2025"
+    },
+    "contact": {
+        "title": "Kontakt",
+        "subtitle": "Skontaktuj się z nami",
+        "form": {
+            "name": "Imię",
+            "namePlaceholder": "Wprowadź swoje imię",
+            "email": "Email",
+            "emailPlaceholder": "Wprowadź swój email",
+            "subject": "Temat",
+            "subjectPlaceholder": "Wprowadź temat wiadomości",
+            "message": "Wiadomość",
+            "messagePlaceholder": "Wprowadź treść wiadomości",
+            "submit": "Wyślij wiadomość",
+            "submitting": "Wysyłanie...",
+            "successMessage": "Wiadomość została wysłana pomyślnie!",
+            "errorMessage": "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.",
+            "successToast": "Wiadomość została wysłana pomyślnie!",
+            "errorToast": "Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie."
+        },
+        "info": {
+            "title": "Informacje kontaktowe",
+            "description": "Jesteśmy dostępni dla Ciebie! Jeśli masz pytania dotyczące platformy DevLink, potrzebujesz pomocy technicznej lub chcesz podzielić się swoimi uwagami, skorzystaj z formularza kontaktowego."
+        },
+        "response": {
+            "title": "Czas odpowiedzi",
+            "description": "Odpowiadamy na wszystkie wiadomości w ciągu 24 godzin. W przypadku pilnych spraw technicznych staramy się odpowiedzieć jeszcze szybciej."
+        }
     }
 }

@@ -116,10 +116,17 @@ class UserDetails {
     }
 
     public function toArray() {
+        $tags = $this->tags;
+        if (is_string($tags)) {
+            $decodedTags = json_decode($tags, true);
+            $tags = is_array($decodedTags) ? $decodedTags : [];
+        } elseif (!is_array($tags)) {
+            $tags = [];
+        }
+        
         return [
-            'user_id' => $this->user_id,
             'description' => $this->description,
-            'tags' => $this->tags,
+            'tags' => $tags,
             'category' => $this->category,
             'hasCommercialExperience' => $this->has_commercial_experience,
             'experienceLevel' => $this->experience_level,

@@ -6,7 +6,8 @@ const NavigationLinks = ({ variant = "desktop", onLinkClick }) => {
   const links = [
     { href: "/", key: "header.homePage", isExternal: false },
     { href: "/#/post-announcement", key: "header.postAnnouncement", isExternal: true },
-    { href: "/#/about", key: "header.about", isExternal: true },
+    { href: "/about", key: "header.about", isExternal: false },
+    { href: "/contact", key: "header.contact", isExternal: false },
   ];
 
   if (variant === "mobile") {

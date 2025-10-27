@@ -53,13 +53,8 @@ export const AuthProvider = ({ children }) => {
     const checkAuthStatus = useCallback(async () => {
         try {
             if (window.location.hash.includes('/view-profile/') || 
-                window.location.hash.includes('/edit-profile') ||
                 window.location.hash.includes('/activate') ||
                 window.location.hash.includes('/registration-success')) {
-                return;
-            }
-            
-            if (isAuthenticated && user) {
                 return;
             }
             
@@ -97,7 +92,11 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setIsLoading(false);
         }
-    }, [isAuthenticated, user]);
+    }, []);
+
+    useEffect(() => {
+        checkAuthStatus();
+    }, [checkAuthStatus]);
 
     const login = async (loginData) => {
         try {
