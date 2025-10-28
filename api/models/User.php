@@ -8,8 +8,10 @@ class User {
     private $created_at;
     private $activation_token;
     private $is_active;
+    private $password_reset_token;
+    private $password_reset_expires;
 
-    public function __construct($id = null, $nickname = null, $email = null, $password = null, $created_at = null, $activation_token = null, $is_active = false) {
+    public function __construct($id = null, $nickname = null, $email = null, $password = null, $created_at = null, $activation_token = null, $is_active = false, $password_reset_token = null, $password_reset_expires = null) {
         $this->id = $id;
         $this->nickname = $nickname;
         $this->email = $email;
@@ -17,6 +19,8 @@ class User {
         $this->created_at = $created_at;
         $this->activation_token = $activation_token;
         $this->is_active = $is_active;
+        $this->password_reset_token = $password_reset_token;
+        $this->password_reset_expires = $password_reset_expires;
     }
     
     public function getId() {
@@ -79,6 +83,24 @@ class User {
     
     public function setIsActive($is_active) {
         $this->is_active = $is_active;
+        return $this;
+    }
+
+    public function getPasswordResetToken() {
+        return $this->password_reset_token;
+    }
+
+    public function setPasswordResetToken($token) {
+        $this->password_reset_token = $token;
+        return $this;
+    }
+
+    public function getPasswordResetExpires() {
+        return $this->password_reset_expires;
+    }
+
+    public function setPasswordResetExpires($expires) {
+        $this->password_reset_expires = $expires;
         return $this;
     }
 

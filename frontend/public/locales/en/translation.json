@@ -219,6 +219,40 @@
             "unexpectedError": "An unexpected error occurred during activation"
         }
     },
+    "forgotPassword": {
+        "title": "Forgot Password?",
+        "subtitle": "Enter your email address and we'll send you a password reset link",
+        "emailPlaceholder": "Your email address",
+        "emailRequired": "Email is required",
+        "invalidEmail": "Enter a valid email address",
+        "sendResetLink": "Send Reset Link",
+        "sending": "Sending...",
+        "emailSent": "If the email exists in our database, a password reset link has been sent",
+        "emailSentTitle": "Email Sent!",
+        "emailSentMessage": "If the email exists in our database, you will receive a message with a link to reset your password.",
+        "backToLogin": "Back to Login",
+        "rememberPassword": "Remembered your password?",
+        "error": "An error occurred while sending the email"
+    },
+    "resetPassword": {
+        "title": "Reset Password",
+        "subtitle": "Enter your new password",
+        "passwordPlaceholder": "New password",
+        "confirmPassword": "Confirm Password",
+        "confirmPasswordPlaceholder": "Repeat new password",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "passwordsDoNotMatch": "Passwords do not match",
+        "resetButton": "Reset Password",
+        "resetting": "Resetting...",
+        "success": "Password has been successfully reset",
+        "successTitle": "Password Changed!",
+        "successMessage": "Your password has been successfully reset. You can now log in with your new password.",
+        "redirecting": "Redirecting to login page...",
+        "noToken": "No password reset token",
+        "invalidToken": "Invalid or expired token",
+        "tokenExpired": "Password reset token has expired",
+        "error": "An error occurred while resetting the password"
+    },
     "authRequired": {
         "title": "Login Required",
         "message": "You must be logged in to add an offer.",

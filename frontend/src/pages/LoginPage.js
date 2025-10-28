@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useLoginFormValidation } from "../hooks/useLoginFormValidation";
 import { useAuth } from "../contexts/AuthContext";
 import { useToast } from "../contexts/ToastContext";
@@ -150,11 +150,21 @@ const LoginPage = () => {
 						</button>
 					</form>
 
-					<FormFooter
-						textKey="login.noAccount"
-						linkTextKey="header.register"
-						linkTo="/register"
-					/>
+					<div className="space-y-3">
+						<FormFooter
+							textKey="login.noAccount"
+							linkTextKey="header.register"
+							linkTo="/register"
+						/>
+						<div className="text-center">
+							<Link
+								to="/forgot-password"
+								className="text-sm text-yellow-400 hover:text-yellow-500 transition-colors duration-200"
+							>
+								{t("login.forgotPassword")}
+							</Link>
+						</div>
+					</div>
 				</div>
 			</div>
 		</PageContainer>

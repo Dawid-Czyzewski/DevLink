@@ -19,6 +19,8 @@ import AboutPage from './pages/AboutPage';
 import TermsPage from './pages/TermsPage';
 import PrivacyPage from './pages/PrivacyPage';
 import ContactPage from './pages/ContactPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 import ProtectedRoute from './components/common/ProtectedRoute';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ToastProvider, useToast } from './contexts/ToastContext';
@@ -62,6 +64,16 @@ function AppContent() {
 					} />
 					<Route path="/activate" element={<ActivatePage />} />
 					<Route path="/registration-success" element={<RegistrationSuccessPage />} />
+					<Route path="/forgot-password" element={
+						<ProtectedRoute requireAuth={false}>
+							<ForgotPasswordPage />
+						</ProtectedRoute>
+					} />
+					<Route path="/reset-password" element={
+						<ProtectedRoute requireAuth={false}>
+							<ResetPasswordPage />
+						</ProtectedRoute>
+					} />
 					<Route path="/profile" element={
 						<ProtectedRoute requireAuth={true}>
 							<ProfilePage />

@@ -237,4 +237,57 @@ class UserController extends BaseController {
             Response::serverError('An unexpected error occurred while retrieving profile options');
         }
     }
+
+    public function forgotPassword() {
+        try {
+            if (!Request::isPost()) {
+                Response::error('Method not allowed', 405);
+            }
+            
+            $data = Request::getJsonInput();
+            
+            if (empty($data) || !isset($data['email'])) {
+                Response::error('Email is required', 400);
+            }
+            
+            $result = $this->userService->forgotPassword($data['email']);
+            
+            if ($result['success']) {
+                Response::success([], $result['message'], 200);
+            } else {
+                Response::error($result['message'], 400);
+            }
+            
+        } catch (Exception $e) {
+            Response::serverError('forgotPassword.errors.unexpectedError');
+        }
+    }
+
+    public function resetPassword() {
+        try {
+            if (!Request::isPost()) {
+                Response::error('Method not allowed', 405);
+            }
+            
+            $data = Request::getJsonInput();
+            
+            if (empty($data) || !isset($data['token']) || !isset($data['password'])) {
+                Response::error('Token and password are required', 400);
+            }
+            
+            $result = $this->userService->resetPassword($data['token'], $data['password']);
+            
+            if ($result['success']) {
+                Response::success([], $result['message'], 200);
+            } else {
+                if (isset($result['errors'])) {
+                    Response::validationError($result['errors']);
+                } else {
+                    Response::error($result['message'], 400);
+                }
+            }
+        } catch (Exception $e) {
+            Response::serverError('resetPassword.errors.unexpectedError');
+        }
+    }
 }

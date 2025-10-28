@@ -219,6 +219,40 @@
             "unexpectedError": "Wystąpił nieoczekiwany błąd podczas aktywacji"
         }
     },
+    "forgotPassword": {
+        "title": "Zapomniałeś hasła?",
+        "subtitle": "Podaj swój adres email, a wyślemy Ci link do resetowania hasła",
+        "emailPlaceholder": "Twój adres e-mail",
+        "emailRequired": "Email jest wymagany",
+        "invalidEmail": "Wprowadź prawidłowy adres email",
+        "sendResetLink": "Wyślij link resetujący",
+        "sending": "Wysyłanie...",
+        "emailSent": "Jeśli podany email istnieje w naszej bazie, został wysłany link do resetowania hasła",
+        "emailSentTitle": "Email wysłany!",
+        "emailSentMessage": "Jeśli podany email istnieje w naszej bazie, otrzymasz wiadomość z linkiem do resetowania hasła.",
+        "backToLogin": "Powrót do logowania",
+        "rememberPassword": "Przypomniałeś sobie hasło?",
+        "error": "Wystąpił błąd podczas wysyłania emaila"
+    },
+    "resetPassword": {
+        "title": "Resetowanie hasła",
+        "subtitle": "Wprowadź nowe hasło",
+        "passwordPlaceholder": "Nowe hasło",
+        "confirmPassword": "Potwierdź hasło",
+        "confirmPasswordPlaceholder": "Powtórz nowe hasło",
+        "passwordTooShort": "Hasło musi mieć co najmniej 8 znaków",
+        "passwordsDoNotMatch": "Hasła nie są identyczne",
+        "resetButton": "Zresetuj hasło",
+        "resetting": "Resetowanie...",
+        "success": "Hasło zostało pomyślnie zresetowane",
+        "successTitle": "Hasło zostało zmienione!",
+        "successMessage": "Twoje hasło zostało pomyślnie zresetowane. Możesz się teraz zalogować nowym hasłem.",
+        "redirecting": "Przekierowywanie do strony logowania...",
+        "noToken": "Brak tokenu resetowania hasła",
+        "invalidToken": "Nieprawidłowy lub wygasły token",
+        "tokenExpired": "Token resetowania hasła wygasł",
+        "error": "Wystąpił błąd podczas resetowania hasła"
+    },
     "authRequired": {
         "title": "Wymagane logowanie",
         "message": "Aby dodać ogłoszenie, musisz być zalogowany.",

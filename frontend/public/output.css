@@ -1077,6 +1077,12 @@
       background-color: color-mix(in oklab, var(--color-green-400) 20%, transparent);
     }
   }
+  .bg-green-500\/20 {
+    background-color: color-mix(in srgb, oklch(72.3% 0.219 149.579) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-green-500) 20%, transparent);
+    }
+  }
   .bg-green-600\/80 {
     background-color: color-mix(in srgb, oklch(62.7% 0.194 149.214) 80%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1643,6 +1649,9 @@
   }
   .text-green-400 {
     color: var(--color-green-400);
+  }
+  .text-green-500 {
+    color: var(--color-green-500);
   }
   .text-green-600 {
     color: var(--color-green-600);

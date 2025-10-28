@@ -176,4 +176,16 @@ class EmailService implements EmailServiceInterface {
 		require_once EMAIL_TEMPLATES_PATH . 'contact.php';
 		return getContactEmailTemplate($contactData);
 	}
+
+	public function sendPasswordResetEmail(string $email, string $resetLink): bool {
+		$subject = 'Password Reset - DevLink';
+		$body = $this->getPasswordResetEmailTemplate($resetLink);
+		
+		return $this->sendEmail($email, $subject, $body);
+	}
+
+	private function getPasswordResetEmailTemplate(string $resetLink): string {
+		require_once EMAIL_TEMPLATES_PATH . 'passwordReset.php';
+		return getPasswordResetEmailTemplate($resetLink);
+	}
 }

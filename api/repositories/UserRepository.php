@@ -88,7 +88,8 @@ class UserRepository implements UserRepositoryInterface {
     }
     
     public function findByEmail(string $email): ?User {
-        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at
+        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at, 
+                         password_reset_token, password_reset_expires
                   FROM " . $this->table_name . " 
                   WHERE email = :email 
                   LIMIT 1";
@@ -99,6 +100,64 @@ class UserRepository implements UserRepositoryInterface {
         
         $data = $stmt->fetch();
         return $data ? $this->mapToUser($data) : null;
+    }
+
+    public function findByPasswordResetToken(string $token): ?User {
+        $query = "SELECT id, nickname, email, password, activation_token, is_active, created_at,
+                         password_reset_token, password_reset_expires
+                  FROM " . $this->table_name . " 
+                  WHERE password_reset_token = :token 
+                  LIMIT 1";
+        
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":token", $token);
+        $stmt->execute();
+        
+        $data = $stmt->fetch();
+        return $data ? $this->mapToUser($data) : null;
+    }
+
+    public function updatePasswordResetToken(User $user): bool {
+        try {
+            $query = "UPDATE " . $this->table_name . " 
+                      SET password_reset_token=:token, password_reset_expires=:expires
+                      WHERE id=:id";
+            
+            $stmt = $this->conn->prepare($query);
+            $token = $user->getPasswordResetToken();
+            $expires = $user->getPasswordResetExpires();
+            $id = $user->getId();
+            
+            $stmt->bindValue(":token", $token, $token ? PDO::PARAM_STR : PDO::PARAM_NULL);
+            $stmt->bindValue(":expires", $expires, $expires ? PDO::PARAM_STR : PDO::PARAM_NULL);
+            $stmt->bindValue(":id", $id, PDO::PARAM_INT);
+            
+            $result = $stmt->execute();
+            
+            if (!$result) {
+                error_log("Update password reset token error: " . implode(", ", $stmt->errorInfo()));
+            }
+            
+            return $result;
+        } catch (Exception $e) {
+            error_log("Exception in updatePasswordResetToken: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function updatePassword(User $user): bool {
+        $query = "UPDATE " . $this->table_name . " 
+                  SET password=:password, password_reset_token=NULL, password_reset_expires=NULL
+                  WHERE id=:id";
+        
+        $stmt = $this->conn->prepare($query);
+        $password = $user->getPassword();
+        $id = $user->getId();
+        
+        $stmt->bindParam(":password", $password);
+        $stmt->bindParam(":id", $id);
+        
+        return $stmt->execute();
     }
     
     public function findByNickname(string $nickname): ?User {
@@ -218,7 +277,9 @@ class UserRepository implements UserRepositoryInterface {
             $data['password'] ?? null,
             $data['created_at'],
             $data['activation_token'] ?? null,
-            (bool) $data['is_active']
+            (bool) $data['is_active'],
+            $data['password_reset_token'] ?? null,
+            $data['password_reset_expires'] ?? null
         );
     }
 }

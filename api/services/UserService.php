@@ -294,4 +294,77 @@ class UserService {
     private function generateActivationToken(): string {
         return bin2hex(random_bytes(32));
     }
+
+    public function forgotPassword(string $email): array {
+        $user = $this->userRepository->findByEmail($email);
+        
+        if (!$user) {
+            return [
+                'success' => true,
+                'message' => 'forgotPassword.emailSent'
+            ];
+        }
+
+        $resetToken = $this->generateActivationToken();
+        $expiresAt = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+        $user->setPasswordResetToken($resetToken);
+        $user->setPasswordResetExpires($expiresAt);
+        
+        $updateResult = $this->userRepository->updatePasswordResetToken($user);
+        if (!$updateResult) {
+            error_log("Failed to update password reset token for user ID: " . $user->getId());
+        }
+
+        $config = require CONFIG_PATH . 'email.php';
+        $baseUrl = $config['frontend_urls']['base_url'];
+        $resetLink = $baseUrl . "/#/reset-password?token=" . $resetToken;
+        
+        $emailSent = $this->emailService->sendPasswordResetEmail($user->getEmail(), $resetLink);
+        if (!$emailSent) {
+            error_log("Failed to send password reset email to: " . $user->getEmail());
+        }
+
+        return [
+            'success' => true,
+            'message' => 'forgotPassword.emailSent'
+        ];
+    }
+
+    public function resetPassword(string $token, string $newPassword): array {
+        $user = $this->userRepository->findByPasswordResetToken($token);
+        
+        if (!$user) {
+            return [
+                'success' => false,
+                'message' => 'resetPassword.invalidToken'
+            ];
+        }
+
+        if (strtotime($user->getPasswordResetExpires()) < time()) {
+            return [
+                'success' => false,
+                'message' => 'resetPassword.tokenExpired'
+            ];
+        }
+
+        if (strlen($newPassword) < 8) {
+            return [
+                'success' => false,
+                'errors' => ['password' => 'resetPassword.passwordTooShort']
+            ];
+        }
+
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+        $user->setPassword($hashedPassword);
+        $user->setPasswordResetToken(null);
+        $user->setPasswordResetExpires(null);
+        
+        $this->userRepository->updatePassword($user);
+
+        return [
+            'success' => true,
+            'message' => 'resetPassword.success'
+        ];
+    }
 }
