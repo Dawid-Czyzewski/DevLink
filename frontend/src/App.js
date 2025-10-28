@@ -70,7 +70,7 @@ function AppContent() {
 						</ProtectedRoute>
 					} />
 					<Route path="/reset-password" element={
-						<ProtectedRoute requireAuth={false}>
+						<ProtectedRoute requireAuth={false} allowAuthenticated={true}>
 							<ResetPasswordPage />
 						</ProtectedRoute>
 					} />

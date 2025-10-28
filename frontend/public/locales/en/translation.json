@@ -16,7 +16,8 @@
         "save": "Save",
         "edit": "Edit",
         "delete": "Delete",
-        "confirm": "Confirm"
+        "confirm": "Confirm",
+        "loading": "Loading..."
     },
     "footer": {
         "description": "Platform connecting IT developers for collaborative projects. Find partners to bring your ideas to life.",

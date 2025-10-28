@@ -16,7 +16,8 @@
         "save": "Zapisz",
         "edit": "Edytuj",
         "delete": "Usuń",
-        "confirm": "Potwierdź"
+        "confirm": "Potwierdź",
+        "loading": "Ładowanie..."
     },
     "footer": {
         "description": "Platforma łącząca programistów IT do wspólnych projektów. Znajdź partnerów do realizacji swoich pomysłów.",
