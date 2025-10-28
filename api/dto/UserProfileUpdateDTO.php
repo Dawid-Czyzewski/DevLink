@@ -16,7 +16,7 @@ class UserProfileUpdateDTO {
     public function __construct($data) {
         $this->description = $data['description'] ?? null;
         $this->tags = $data['tags'] ?? [];
-        $this->category = $data['category'] ?? null;
+        $this->category = (!empty($data['category']) && trim($data['category']) !== '') ? $data['category'] : null;
         $this->hasCommercialExperience = $data['hasCommercialExperience'] ?? false;
         $this->experienceLevel = $data['experienceLevel'] ?? null;
         $this->github = $data['github'] ?? null;

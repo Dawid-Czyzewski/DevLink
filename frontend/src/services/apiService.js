@@ -1,6 +1,6 @@
 class ApiService {
 	constructor() {
-		this.baseURL = 'http://localhost:8001';
+		this.baseURL = 'https://devlink.satoshidc.cfolks.pl/api/';
 		this.onAuthError = null;
 	}
 

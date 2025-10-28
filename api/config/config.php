@@ -1,13 +1,13 @@
 <?php
 
 if (php_sapi_name() !== 'cli') {
-	$allowedOrigins = ['http://localhost:3000', 'http://localhost:3001'];
+	$allowedOrigins = ['https://devlink.satoshidc.cfolks.pl/'];
 	$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 	
 	if (in_array($origin, $allowedOrigins)) {
 		header('Access-Control-Allow-Origin: ' . $origin);
 	} else {
-		header('Access-Control-Allow-Origin: http://localhost:3001');
+		header('Access-Control-Allow-Origin: https://devlink.satoshidc.cfolks.pl/');
 	}
 	
 	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');

@@ -214,6 +214,8 @@ class UserController extends BaseController {
         } catch (DatabaseException $e) {
             Response::serverError($e->getMessage());
         } catch (Exception $e) {
+            print_r("Profile update error: " . $e->getMessage());
+            print_r("Stack trace: " . $e->getTraceAsString());
             Response::serverError('editProfile.errors.unexpectedError');
         }
     }

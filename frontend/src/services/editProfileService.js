@@ -26,7 +26,7 @@ class EditProfileService {
         }
 
         const validCategories = ['frontend', 'backend', 'fullstack', 'uxui', 'pm'];
-        if (formData.category && !validCategories.includes(formData.category)) {
+        if (formData.category && formData.category.trim() !== '' && !validCategories.includes(formData.category)) {
             errors.category = t('editProfile.errors.invalidCategory');
         }
 

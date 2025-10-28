@@ -4,7 +4,7 @@ require_once MODELS_PATH . 'UserDetails.php';
 
 class UserDetailsRepository {
     private $conn;
-    private $table_name = "user_details";
+    private $table_name = "userdetails";
     
     public function __construct($db) {
         $this->conn = $db;
@@ -37,15 +37,15 @@ class UserDetailsRepository {
         $website_url = $userDetails->getWebsiteUrl();
         $linkedin_url = $userDetails->getLinkedinUrl();
         
-        $stmt->bindParam(":user_id", $user_id);
-        $stmt->bindParam(":description", $description);
-        $stmt->bindParam(":tags", $tags);
-        $stmt->bindParam(":category", $category);
-        $stmt->bindParam(":has_commercial_experience", $has_commercial_experience);
-        $stmt->bindParam(":experience_level", $experience_level);
-        $stmt->bindParam(":github_url", $github_url);
-        $stmt->bindParam(":website_url", $website_url);
-        $stmt->bindParam(":linkedin_url", $linkedin_url);
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(":description", $description, $description ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":tags", $tags, $tags ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":category", $category, $category ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":has_commercial_experience", $has_commercial_experience, PDO::PARAM_INT);
+        $stmt->bindValue(":experience_level", $experience_level, $experience_level ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":github_url", $github_url, $github_url ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":website_url", $website_url, $website_url ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":linkedin_url", $linkedin_url, $linkedin_url ? PDO::PARAM_STR : PDO::PARAM_NULL);
         
         if ($stmt->execute()) {
             $userDetails->setId($this->conn->lastInsertId());
@@ -76,15 +76,15 @@ class UserDetailsRepository {
         $linkedin_url = $userDetails->getLinkedinUrl();
         $id = $userDetails->getId();
         
-        $stmt->bindParam(":description", $description);
-        $stmt->bindParam(":tags", $tags);
-        $stmt->bindParam(":category", $category);
-        $stmt->bindParam(":has_commercial_experience", $has_commercial_experience);
-        $stmt->bindParam(":experience_level", $experience_level);
-        $stmt->bindParam(":github_url", $github_url);
-        $stmt->bindParam(":website_url", $website_url);
-        $stmt->bindParam(":linkedin_url", $linkedin_url);
-        $stmt->bindParam(":id", $id);
+        $stmt->bindValue(":description", $description, PDO::PARAM_STR);
+        $stmt->bindValue(":tags", $tags, $tags ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":category", $category, $category ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":has_commercial_experience", $has_commercial_experience, PDO::PARAM_INT);
+        $stmt->bindValue(":experience_level", $experience_level, $experience_level ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":github_url", $github_url, $github_url ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":website_url", $website_url, $website_url ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":linkedin_url", $linkedin_url, $linkedin_url ? PDO::PARAM_STR : PDO::PARAM_NULL);
+        $stmt->bindValue(":id", $id, PDO::PARAM_INT);
         
         if (!$stmt->execute()) {
             throw new Exception("Failed to update user details: " . implode(", ", $stmt->errorInfo()));
