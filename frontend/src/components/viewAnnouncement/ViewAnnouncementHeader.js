@@ -30,7 +30,9 @@ const ViewAnnouncementHeader = ({ announcement }) => {
             'backend': t('editProfile.category.backend'),
             'fullstack': t('editProfile.category.fullstack'),
             'uxui': t('editProfile.category.uxui'),
-            'pm': t('editProfile.category.pm')
+            'pm': t('editProfile.category.pm'),
+            'mobile': t('editProfile.category.mobile'),
+            'gamedev': t('editProfile.category.gamedev')
         };
         return categoryMap[category] || category;
     };
@@ -60,6 +62,14 @@ const ViewAnnouncementHeader = ({ announcement }) => {
                         </svg>
                         {formatDate(announcement.created_at)}
                     </div>
+                    {typeof announcement.views_count !== 'undefined' && (
+                        <div className="flex items-center text-gray-400 text-sm">
+                            <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {t('viewAnnouncement.views', { count: announcement.views_count })}
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ class Announcement {
     private $categories;
     private $tags;
     private $chatCount;
+    private $viewsCount;
     private $createdAt;
     private $updatedAt;
 
@@ -22,6 +23,7 @@ class Announcement {
             $this->categories = $data['categories'] ?? [];
             $this->tags = $data['tags'] ?? [];
             $this->chatCount = $data['chat_count'] ?? 0;
+            $this->viewsCount = $data['views_count'] ?? null;
             $this->createdAt = $data['created_at'] ?? null;
             $this->updatedAt = $data['updated_at'] ?? null;
         }
@@ -57,6 +59,10 @@ class Announcement {
 
     public function getChatCount() {
         return $this->chatCount;
+    }
+
+    public function getViewsCount() {
+        return $this->viewsCount;
     }
 
     public function getCreatedAt() {
@@ -122,6 +128,7 @@ class Announcement {
             'categories' => $this->categories,
             'tags' => $this->tags,
             'chat_count' => $this->chatCount,
+            'views_count' => $this->viewsCount,
             'created_at' => $this->createdAt,
             'updated_at' => $this->updatedAt
         ];

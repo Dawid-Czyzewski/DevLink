@@ -404,7 +404,8 @@
         }
     },
     "viewAnnouncement": {
-        "loading": "Loading announcement...",
+            "loading": "Loading announcement...",
+            "views": "Views: {{count}}",
         "content": {
             "description": "Description",
             "technologies": "Technologies",

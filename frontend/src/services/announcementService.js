@@ -33,6 +33,18 @@ const announcementService = {
         }
     },
 
+    async incrementView(id) {
+        try {
+            const endpoint = `?controller=announcementController&action=incrementView&id=${encodeURIComponent(id)}`;
+            return await apiService.request(endpoint, {
+                method: 'POST',
+                body: JSON.stringify({ id })
+            });
+        } catch (error) {
+            return { success: false };
+        }
+    },
+
     async getUserAnnouncements() {
         try {
             const response = await apiService.get('announcementController', 'getByUserId');

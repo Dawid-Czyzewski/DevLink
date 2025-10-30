@@ -59,6 +59,17 @@ class AnnouncementRepository {
         }
     }
 
+    public function incrementViews($id) {
+        try {
+            $query = "UPDATE announcements SET views_count = COALESCE(views_count, 0) + 1 WHERE id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            throw new DatabaseException("Failed to increment views: " . $e->getMessage());
+        }
+    }
+
     public function findByUserId($userId) {
         try {
             $query = "SELECT a.*, COUNT(c.id) as chat_count 

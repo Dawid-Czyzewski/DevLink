@@ -78,6 +78,9 @@ class AnnouncementController extends BaseController {
     public function getById() {
         try {
             $id = Request::get('id');
+            if (!$id) {
+                $id = Request::getBody('id');
+            }
             
             if (!$id) {
                 return Response::error('ID parameter is required', 400);
@@ -89,10 +92,47 @@ class AnnouncementController extends BaseController {
                 return Response::error('Announcement not found', 404);
             }
 
+            $data = $announcement->toArray();
+
+            $currentUserId = $this->getCurrentUserId();
+            if (!$currentUserId || (int)$currentUserId !== (int)$data['user_id']) {
+                unset($data['views_count']);
+            }
+
             return Response::success([
-                'announcement' => $announcement->toArray()
+                'announcement' => $data
             ], 'Announcement retrieved successfully');
 
+        } catch (Exception $e) {
+            return Response::error('Internal server error: ' . $e->getMessage(), 500);
+        }
+    }
+
+    public function incrementView() {
+        try {
+            if (!Request::isPost()) {
+                return Response::error('Invalid request method', 405);
+            }
+
+            $id = Request::get('id');
+            if (!$id) {
+                return Response::error('ID parameter is required', 400);
+            }
+
+            $announcement = $this->announcementRepository->findById($id);
+            if ($announcement) {
+                $currentUserId = $this->getCurrentUserId();
+                if ($currentUserId && (int)$currentUserId === (int)$announcement->getUserId()) {
+                    return Response::success(null, 'View not incremented for author');
+                }
+            }
+
+            $ok = $this->announcementRepository->incrementViews($id);
+            if (!$ok) {
+                return Response::error('Failed to increment view', 500);
+            }
+
+            return Response::success(null, 'View incremented');
         } catch (Exception $e) {
             return Response::error('Internal server error: ' . $e->getMessage(), 500);
         }

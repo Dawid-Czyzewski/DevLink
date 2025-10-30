@@ -404,7 +404,8 @@
         }
     },
     "viewAnnouncement": {
-        "loading": "Ładowanie ogłoszenia...",
+            "loading": "Ładowanie ogłoszenia...",
+            "views": "Wyświetlenia: {{count}}",
         "content": {
             "description": "Opis",
             "technologies": "Technologie",

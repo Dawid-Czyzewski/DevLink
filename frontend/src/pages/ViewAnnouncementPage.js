@@ -8,7 +8,6 @@ const ViewAnnouncementPage = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const { t } = useTranslation();
-
     const [announcement, setAnnouncement] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -32,8 +31,13 @@ const ViewAnnouncementPage = () => {
     }, [id, t]);
 
     useEffect(() => {
-        loadAnnouncement();
-    }, [loadAnnouncement]);
+        (async () => {
+            if (id) {
+                try { await announcementService.incrementView(id); } catch (_) {}
+            }
+            loadAnnouncement();
+        })();
+    }, [loadAnnouncement, id]);
 
 
     if (loading) {
