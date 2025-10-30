@@ -8,7 +8,9 @@ const CategorySection = ({ category, onChange, error }) => {
         { value: 'backend', label: t('editProfile.category.backend') },
         { value: 'fullstack', label: t('editProfile.category.fullstack') },
         { value: 'uxui', label: t('editProfile.category.uxui') },
-        { value: 'pm', label: t('editProfile.category.pm') }
+        { value: 'pm', label: t('editProfile.category.pm') },
+        { value: 'mobile', label: t('editProfile.category.mobile') },
+        { value: 'gamedev', label: t('editProfile.category.gamedev') }
     ];
 
     return (

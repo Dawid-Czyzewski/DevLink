@@ -535,6 +535,9 @@
   .min-h-\[48px\] {
     min-height: 48px;
   }
+  .min-h-\[400px\] {
+    min-height: 400px;
+  }
   .min-h-full {
     min-height: 100%;
   }

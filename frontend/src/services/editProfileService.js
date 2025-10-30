@@ -25,7 +25,7 @@ class EditProfileService {
             }
         }
 
-        const validCategories = ['frontend', 'backend', 'fullstack', 'uxui', 'pm'];
+        const validCategories = ['frontend', 'backend', 'fullstack', 'uxui', 'pm', 'mobile', 'gamedev'];
         if (formData.category && formData.category.trim() !== '' && !validCategories.includes(formData.category)) {
             errors.category = t('editProfile.errors.invalidCategory');
         }

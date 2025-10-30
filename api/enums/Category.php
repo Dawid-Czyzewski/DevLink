@@ -6,13 +6,17 @@ class Category {
     const FULLSTACK = 'fullstack';
     const UXUI = 'uxui';
     const PM = 'pm';
+    const MOBILE = 'mobile';
+    const GAMEDEV = 'gamedev';
     
     private static $validCategories = [
         self::FRONTEND,
         self::BACKEND,
         self::FULLSTACK,
         self::UXUI,
-        self::PM
+        self::PM,
+        self::MOBILE,
+        self::GAMEDEV
     ];
     
     private static $labels = [
@@ -20,7 +24,9 @@ class Category {
         self::BACKEND => 'Backend',
         self::FULLSTACK => 'Fullstack',
         self::UXUI => 'UX/UI',
-        self::PM => 'Product Manager'
+        self::PM => 'Project Manager',
+        self::MOBILE => 'Mobile',
+        self::GAMEDEV => 'Game Dev'
     ];
     
     public static function isValid($category) {

@@ -53,7 +53,7 @@ const HomePageFilters = ({
                     {t('homePage.categoriesFilter.label')}
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-                    {['frontend', 'backend', 'fullstack', 'uxui', 'pm'].map((category) => (
+                    {['frontend', 'backend', 'fullstack', 'uxui', 'pm', 'mobile', 'gamedev'].map((category) => (
                         <label
                             key={category}
                             className="flex items-center p-3 bg-gray-700/50 border border-gray-600/50 rounded-lg hover:bg-gray-600/50 transition-colors cursor-pointer"

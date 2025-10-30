@@ -9,7 +9,9 @@ const AnnouncementCategories = ({ categories, onChange, error }) => {
         { value: 'backend', label: t('postAnnouncement.categories.backend') },
         { value: 'fullstack', label: t('postAnnouncement.categories.fullstack') },
         { value: 'uxui', label: t('postAnnouncement.categories.uxui') },
-        { value: 'pm', label: t('postAnnouncement.categories.pm') }
+        { value: 'pm', label: t('postAnnouncement.categories.pm') },
+        { value: 'mobile', label: t('postAnnouncement.categories.mobile') },
+        { value: 'gamedev', label: t('postAnnouncement.categories.gamedev') }
     ];
 
     const handleCategoryChange = (categoryValue, isChecked) => {

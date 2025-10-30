@@ -121,7 +121,9 @@
             "backend": "Backend",
             "fullstack": "Fullstack",
             "uxui": "UX/UI",
-            "pm": "Product Manager"
+            "pm": "Project Manager",
+            "mobile": "Mobile",
+            "gamedev": "Game Dev"
         },
             "experience": {
                 "title": "Poziom doświadczenia komercyjnego",
@@ -284,7 +286,9 @@
                 "backend": "Backend",
                 "fullstack": "Fullstack",
                 "uxui": "UX/UI",
-                "pm": "Product Manager"
+            "pm": "Project Manager",
+            "mobile": "Mobile",
+            "gamedev": "Game Dev"
             },
             "errors": {
                 "validationFailed": "Formularz zawiera błędy walidacji",
@@ -469,7 +473,9 @@
             "backend": "Backend",
             "fullstack": "Fullstack",
             "uxui": "UX/UI",
-            "pm": "Product Manager"
+            "pm": "Project Manager",
+            "mobile": "Mobile",
+            "gamedev": "Game Dev"
         },
         "categoriesFilter": {
             "label": "Filtruj po kategoriach"
