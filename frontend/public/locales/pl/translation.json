@@ -33,7 +33,7 @@
             "terms": "Regulamin"
         },
         "followUs": "Śledź nas",
-        "copyright": "© 2025 DevLink. Wszystkie prawa zastrzeżone.",
+        "copyright": "© {{year}} DevLink. Wszystkie prawa zastrzeżone.",
         "madeWith": "Zrobione z ❤️ dla społeczności IT"
     },
     "login": {

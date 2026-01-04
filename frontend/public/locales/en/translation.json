@@ -33,7 +33,7 @@
             "terms": "Terms of Service"
         },
         "followUs": "Follow Us",
-        "copyright": "© 2025 DevLink. All rights reserved.",
+        "copyright": "© {{year}} DevLink. All rights reserved.",
         "madeWith": "Made with ❤️ for the IT community"
     },
     "login": {
